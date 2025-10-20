@@ -50,7 +50,7 @@ export default function RecipePage() {
     async function loadRecipe() {
       try {
         setLoading(true);
-        const response = await fetch('/api/recipe');
+        const response = await fetch('/recipe.json');
         const data = await response.json();
         
         if (data.steps && Array.isArray(data.steps)) {

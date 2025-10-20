@@ -118,7 +118,7 @@ export default function DesignHomePage() {
   React.useEffect(() => {
     async function loadRecipe() {
       try {
-        const response = await fetch('/api/recipe');
+        const response = await fetch('/recipe.json');
         const data = await response.json();
         if (data.steps && Array.isArray(data.steps)) {
           setRecipeSteps(data.steps);
