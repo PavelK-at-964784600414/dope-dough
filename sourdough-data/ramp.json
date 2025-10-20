@@ -1,0 +1,78 @@
+
+{
+  "app": {
+    "name": "Sourdough Timer",
+    "description": "Next.js app that parses recipe.md, extracts timers, and provides step-by-step guidance with persistent timers, popups and sound alerts."
+  },
+  "think_mode": {
+    "enabled": true,
+    "type": "plan-first",
+    "instructions": "Before generating code, output a concise implementation plan (5-8 bullet points). Do NOT emit chain-of-thought. After the plan, proceed to implement the files (no additional confirmation required)."
+  },
+  "inputs": {
+    "recipe_file": "sourdough-data/recipe.md"
+  },
+  "features": {
+    "auto_timer_parsing": true,
+    "timer_units_supported": ["seconds","minutes","hours"],
+    "timer_fallback_behavior": "if only range provided (min/max), create a suggested timer equal to min with optional 'set to max' toggle",
+    "notifications": {
+      "popup": true,
+      "toast": true,
+      "browser_notification": true,
+      "sound_alert": {
+        "enabled": true,
+        "file": "public/sounds/bell.mp3",
+        "volume_control": true
+      }
+    },
+    "persistence": {
+      "localStorage": true,
+      "keys": {
+        "recipe_progress": "sourdough:progress",
+        "timers_state": "sourdough:timers"
+      }
+    },
+    "ui": {
+      "framework": "Next.js (App Router)",
+      "language": "TypeScript",
+      "styling": "Tailwind CSS",
+      "animations": "Framer Motion",
+      "icons": "lucide-react or shadcn"
+    }
+  },
+  "deliverables": [
+    "app/page.tsx (landing + recipe launch)",
+    "app/recipe/page.tsx (full recipe flow)",
+    "data/parseRecipe.ts (library to parse JSON block in recipe.md)",
+    "components/StepCard.tsx (shows step text, duration, tags)",
+    "components/TimerControl.tsx (start/pause/reset, progress bar)",
+    "components/Notification.tsx (modal + toast + sound)",
+    "store/useRecipeStore.ts (Zustand or local state + persistence)",
+    "public/sounds/bell.mp3 (suggested small bell sound)",
+    "README.md (how to run + test instructions)"
+  ],
+  "tasks": [
+    {
+      "id": "parse",
+      "title": "Parse recipe.md",
+      "description": "Read the JSON steps block and produce a typed array with durations converted to seconds. Provide fallback timers for ranges."
+    },
+    {
+      "id": "ui",
+      "title": "Build UI",
+      "description": "Create StepCard + TimerControl + Progress + Start All / Pause All controls and mobile-first layout."
+    },
+    {
+      "id": "timers",
+      "title": "Implement timers",
+      "description": "Robust timers that persist through reloads, support long durations, emit toast, browser notification and play a bell sound when finished."
+    },
+    {
+      "id": "tests",
+      "title": "Manual test instructions",
+      "description": "Add README items to test notifications, timer persistence and edge cases (long timers, overlapping timers)."
+    }
+  ],
+  "notes_for_agent": "Keep code modular, well-documented, and production-ready. Include short implementation plan (5-8 bullets) at the start of the agent response, then implement files. Do not produce chain-of-thought."
+}
