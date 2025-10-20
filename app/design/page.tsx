@@ -108,9 +108,7 @@ export default function DesignHomePage() {
 
   return (
     <div className="min-h-screen bg-warmBg pb-20 md:pb-0">
-      <TopNav
-        onFeedStarter={() => router.push('/design/feed')}
-      />
+      <TopNav />
 
       <main className="container mx-auto px-4 py-8 space-y-10">
         {/* Hero Section */}
