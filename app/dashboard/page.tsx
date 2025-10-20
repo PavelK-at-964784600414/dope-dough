@@ -43,7 +43,7 @@ const translations = {
     quickActions: "Quick Actions",
     recipeTitle: "Classic Sourdough Bread",
     recipeDescription: "A traditional sourdough loaf with a crispy crust and tangy flavor",
-    recipePrepTime: "~12 hours",
+    recipePrepTime: "~33 hours",
     recentSteps: {
       step1Title: "Mixed ingredients",
       step1Desc: "Combined flour, water, and starter",
@@ -81,7 +81,7 @@ const translations = {
     quickActions: "Быстрые Действия",
     recipeTitle: "Классический Хлеб на Закваске",
     recipeDescription: "Традиционный хлеб на закваске с хрустящей корочкой и пикантным вкусом",
-    recipePrepTime: "~12 часов",
+    recipePrepTime: "~33 часа",
     recentSteps: {
       step1Title: "Смешаны ингредиенты",
       step1Desc: "Соединены мука, вода и закваска",

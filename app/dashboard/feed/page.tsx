@@ -403,6 +403,7 @@ export default function FeedStarterPage() {
                         maxSeconds={WAIT_TIME_MAX}
                         useMaxDuration={useMaxDuration}
                         onToggleDuration={handleToggleDuration}
+                        language={language}
                       />
                     </div>
                   )}

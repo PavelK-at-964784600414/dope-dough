@@ -23,6 +23,7 @@ interface TimerControlProps {
   maxSeconds?: number;
   useMaxDuration?: boolean;
   onToggleDuration?: () => void;
+  language?: 'en' | 'ru';
 }
 
 /**
@@ -42,7 +43,8 @@ export function TimerControl({
   hasMaxDuration = false,
   maxSeconds,
   useMaxDuration = false,
-  onToggleDuration
+  onToggleDuration,
+  language = 'en'
 }: TimerControlProps) {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const hasCalledComplete = useRef<boolean>(false);
@@ -111,7 +113,7 @@ export function TimerControl({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-base font-semibold text-primary-700 font-display">
           <Timer className="h-5 w-5" />
-          <span>Timer</span>
+          <span>{language === 'ru' ? 'Таймер' : 'Timer'}</span>
         </div>
 
         {/* Duration toggle (if step has min/max range) */}
@@ -122,7 +124,9 @@ export function TimerControl({
             onClick={onToggleDuration}
             className="text-xs rounded-lg border-2 border-primary-300 hover:bg-primary-50 hover:border-primary-400 transition-all"
           >
-            {useMaxDuration ? `Max: ${formatDuration(maxSeconds)}` : `Min: ${formatDuration(totalSeconds)}`}
+            {useMaxDuration 
+              ? `${language === 'ru' ? 'Макс' : 'Max'}: ${formatDuration(maxSeconds)}` 
+              : `${language === 'ru' ? 'Мин' : 'Min'}: ${formatDuration(totalSeconds)}`}
           </Button>
         )}
       </div>
@@ -140,7 +144,9 @@ export function TimerControl({
             {formatDuration(remainingSeconds)}
           </div>
           <div className="text-sm text-text-secondary mt-2 font-medium">
-            {isCompleted ? '✓ Completed!' : `of ${formatDuration(totalSeconds)}`}
+            {isCompleted 
+              ? `✓ ${language === 'ru' ? 'Завершено!' : 'Completed!'}` 
+              : `${language === 'ru' ? 'из' : 'of'} ${formatDuration(totalSeconds)}`}
           </div>
         </motion.div>
       </AnimatePresence>
@@ -160,14 +166,14 @@ export function TimerControl({
             size="lg"
           >
             <Play className="mr-2 h-5 w-5" />
-            Start
+            {language === 'ru' ? 'Старт' : 'Start'}
           </Button>
         )}
 
         {isRunning && (
           <Button onClick={onPause} variant="outline" className="flex-1 rounded-xl border-2 border-primary-300 hover:bg-primary-50 hover:border-primary-400 transition-all" size="lg">
             <Pause className="mr-2 h-5 w-5" />
-            Pause
+            {language === 'ru' ? 'Пауза' : 'Pause'}
           </Button>
         )}
 

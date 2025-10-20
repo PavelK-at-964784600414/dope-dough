@@ -13,38 +13,44 @@ interface RecipeOverviewProps {
 }
 
 export function RecipeOverview({ steps, language }: RecipeOverviewProps) {
-  // Calculate total ingredients from all steps
-  const extractIngredients = () => {
-    const ingredients = new Map<string, string>();
+  // Define the correct ingredients list (same as IngredientsChecklist)
+  const ingredients = language === 'ru' ? [
+    // Закваска и опара
+    { name: 'Закваска (стартер)', amount: '~40-50 г активная' },
+    { name: 'Вода для закваски/опары', amount: '20 г + 80-85 г' },
+    { name: 'Мука для закваски/опары', amount: '20 г + 80-85 г' },
     
-    steps.forEach(step => {
-      const instruction = language === 'ru' ? step.instruction_ru : step.instruction_en;
-      
-      // Extract ingredient mentions (this is a simple extraction)
-      const patterns = [
-        /(\d+)\s*г\s*([\wа-яА-Я\s]+)/g, // Russian: "200 г муки"
-        /(\d+)\s*g\s*(\w+(?:\s+\w+)?)/gi, // English: "200 g flour"
-        /(\d+)\s*tbsp\s*(\w+(?:\s+\w+)?)/gi, // "1 tbsp seeds"
-        /(\d+)\s*tsp\s*(\w+(?:\s+\w+)?)/gi, // "½ tsp starter"
-        /½\s*tsp\s*(\w+)/gi, // "½ tsp starter"
-      ];
-      
-      patterns.forEach(pattern => {
-        const matches = instruction.matchAll(pattern);
-        for (const match of matches) {
-          const amount = match[1] || '½';
-          const ingredient = match[2]?.trim();
-          if (ingredient && !ingredients.has(ingredient)) {
-            ingredients.set(ingredient, amount);
-          }
-        }
-      });
-    });
+    // Основное тесто
+    { name: 'Холодная вода', amount: '270 г (на одну порцию)' },
+    { name: 'Цельнозерновая мука', amount: '200 г (на одну порцию)' },
+    { name: 'Белая мука', amount: '200 г (на одну порцию)' },
+    { name: 'Соль', amount: '9 г (на одну порцию)' },
+    { name: 'Вода для финального замеса', amount: '28 г (на одну порцию)' },
+    { name: 'Семена (чиа/лён/семечки)', amount: '1 ст.л.', optional: true },
+    { name: 'Оливки или семечки', amount: 'По желанию', optional: true },
     
-    return Array.from(ingredients.entries());
-  };
-
-  const ingredients = extractIngredients();
+    // Для работы
+    { name: 'Масло для миски', amount: 'Для смазывания' },
+    { name: 'Вода для спрея', amount: 'Для выпечки' },
+  ] : [
+    // Starter and levain
+    { name: 'Sourdough starter', amount: '~40-50 g active' },
+    { name: 'Water for starter/levain', amount: '20 g + 80-85 g' },
+    { name: 'Flour for starter/levain', amount: '20 g + 80-85 g' },
+    
+    // Main dough
+    { name: 'Cold water', amount: '270 g (per loaf)' },
+    { name: 'Whole-grain flour', amount: '200 g (per loaf)' },
+    { name: 'White flour', amount: '200 g (per loaf)' },
+    { name: 'Salt', amount: '9 g (per loaf)' },
+    { name: 'Water for final mixing', amount: '28 g (per loaf)' },
+    { name: 'Seeds (chia/flax/mix)', amount: '1 tbsp', optional: true },
+    { name: 'Olives or seeds', amount: 'Optional', optional: true },
+    
+    // For working
+    { name: 'Oil for bowl', amount: 'For greasing' },
+    { name: 'Water for spray', amount: 'For baking' },
+  ];
   
   // Calculate total time
   const totalTime = steps.reduce((sum, step) => {
@@ -91,16 +97,27 @@ export function RecipeOverview({ steps, language }: RecipeOverviewProps) {
           {ingredients.length > 0 && (
             <div>
               <h3 className="font-semibold text-lg mb-3 font-display text-text-primary">
-                {language === 'ru' ? 'Основные ингредиенты' : 'Key Ingredients'}
+                {language === 'ru' ? 'Ингредиенты' : 'Ingredients'}
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                {ingredients.map(([ingredient, amount], idx) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {ingredients.map((ingredient, idx) => (
                   <div 
                     key={idx}
-                    className="text-sm border-2 border-borderColor-light rounded-xl p-2 bg-surface hover:bg-primary-50 hover:border-primary-200 transition-all"
+                    className={`text-sm border-2 border-borderColor-light rounded-xl p-3 bg-surface hover:bg-primary-50 hover:border-primary-200 transition-all ${
+                      ingredient.optional ? 'opacity-75' : ''
+                    }`}
                   >
-                    <span className="font-medium text-text-primary">{ingredient}</span>
-                    {amount && <span className="text-text-secondary ml-2">({amount})</span>}
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="font-medium text-text-primary">
+                        {ingredient.name}
+                        {ingredient.optional && (
+                          <span className="text-xs text-text-secondary ml-1">
+                            ({language === 'ru' ? 'по желанию' : 'optional'})
+                          </span>
+                        )}
+                      </span>
+                      <span className="text-text-secondary text-xs whitespace-nowrap">{ingredient.amount}</span>
+                    </div>
                   </div>
                 ))}
               </div>

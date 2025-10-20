@@ -53,7 +53,7 @@ export function IngredientsChecklist({ language }: IngredientsChecklistProps) {
   // Define ingredients based on the recipe
   const ingredients: Ingredient[] = language === 'ru' ? [
     // Закваска и опара
-    { name: 'Закваска (стартер)', amount: '½ ч.л. начальная + ~40-50 г активная' },
+    { name: 'Закваска (стартер)', amount: '~40-50 г активная' },
     { name: 'Вода для закваски/опары', amount: '20 г + 80-85 г' },
     { name: 'Мука для закваски/опары', amount: '20 г + 80-85 г' },
     
@@ -71,7 +71,7 @@ export function IngredientsChecklist({ language }: IngredientsChecklistProps) {
     { name: 'Вода для спрея', amount: 'Для выпечки' },
   ] : [
     // Starter and levain
-    { name: 'Sourdough starter', amount: '½ tsp initial + ~40-50 g active' },
+    { name: 'Sourdough starter', amount: '~40-50 g active' },
     { name: 'Water for starter/levain', amount: '20 g + 80-85 g' },
     { name: 'Flour for starter/levain', amount: '20 g + 80-85 g' },
     

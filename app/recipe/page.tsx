@@ -9,12 +9,13 @@ import { TimerControl } from '@/components/TimerControl';
 import { NotificationManager } from '@/components/Notification';
 import { RecipeOverview } from '@/components/RecipeOverview';
 import { IngredientsChecklist } from '@/components/IngredientsChecklist';
+import { Celebration } from '@/components/Celebration';
 import { TopNav } from '@/components/design-system/TopNav';
 import { useBackgroundTimers } from '@/hooks/useBackgroundTimers';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Button } from '@/components/ui/button';
 import { RotateCcw, ArrowLeft, ChevronLeft, ChevronRight, Check, LayoutDashboard, Sprout } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
 /**
@@ -27,6 +28,7 @@ export default function RecipePage() {
   const [loading, setLoading] = useState(true);
   const [completedNotifications, setCompletedNotifications] = useState<Array<{ stepId: number; stepTitle: string }>>([]);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const {
     progress,
@@ -126,6 +128,13 @@ export default function RecipePage() {
     } else {
       markStepCompleted(stepId);
       // Don't add notification when manually marking complete
+      
+      // Check if this is the final step
+      const isFinalStep = steps.length > 0 && stepId === steps[steps.length - 1].id;
+      if (isFinalStep) {
+        // Show celebration after a brief delay
+        setTimeout(() => setShowCelebration(true), 500);
+      }
     }
   };
 
@@ -138,6 +147,16 @@ export default function RecipePage() {
   return (
     <div className="min-h-screen bg-warmBg pb-20 md:pb-0">
       <TopNav />
+      
+      {/* Celebration overlay */}
+      <AnimatePresence>
+        {showCelebration && (
+          <Celebration 
+            language={language} 
+            onDismiss={() => setShowCelebration(false)} 
+          />
+        )}
+      </AnimatePresence>
       
       {/* Notifications */}
       <NotificationManager
@@ -223,47 +242,52 @@ export default function RecipePage() {
         {!loading && currentStep && (
           <div className="space-y-6">
             {/* Step Navigation Header */}
-            <div className="flex items-center justify-between bg-surface rounded-2xl shadow-md p-6 border border-borderColor-light">
+            <div className="flex flex-col sm:flex-row items-center sm:justify-between bg-surface rounded-2xl shadow-md p-4 sm:p-6 border border-borderColor-light gap-3">
+              {/* Prev button: icon only on small screens to save space */}
               <Button
                 variant="outline"
-                size="lg"
+                size="sm"
                 onClick={goToPreviousStep}
                 disabled={currentStepIndex === 0}
-                className="gap-2 rounded-xl border-2 hover:bg-primary-50 hover:border-primary-300 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                aria-label={language === 'ru' ? 'Назад' : 'Previous'}
+                className="gap-2 rounded-xl border-2 px-3 py-2 sm:px-4 sm:py-2 hover:bg-primary-50 hover:border-primary-300 active:scale-[0.98] transition-all"
               >
-                <ChevronLeft className="h-5 w-5" />
-                {language === 'ru' ? 'Назад' : 'Previous'}
+                <ChevronLeft className="h-4 w-4" />
+                <span className="hidden sm:inline">{language === 'ru' ? 'Назад' : 'Previous'}</span>
               </Button>
 
-              <div className="text-center">
+              {/* Center area: allow wrapping and center alignment on small screens */}
+              <div className="flex-1 text-center flex flex-col items-center">
                 <p className="text-sm text-text-secondary font-medium">
                   {language === 'ru' ? 'Шаг' : 'Step'} {currentStepIndex + 1} {language === 'ru' ? 'из' : 'of'} {steps.length}
                 </p>
-                <div className="flex gap-1.5 mt-3">
+                <div className="flex gap-1 mt-3 flex-wrap justify-center">
                   {steps.map((_, idx) => (
                     <div
                       key={idx}
-                      className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                      className={`rounded-full transition-all duration-300 ${
                         idx === currentStepIndex
-                          ? 'bg-primary-500 ring-4 ring-primary-100 scale-110'
+                          ? 'bg-primary-500 ring-4 ring-primary-100 scale-110 h-2.5 w-2.5 sm:h-2.5 sm:w-2.5'
                           : progress.completedSteps.includes(steps[idx].id)
-                          ? 'bg-success'
-                          : 'bg-borderColor'
+                          ? 'bg-success h-2.5 w-2.5 sm:h-2.5 sm:w-2.5'
+                          : 'bg-borderColor h-2 w-2 sm:h-2.5 sm:w-2.5'
                       }`}
                     />
                   ))}
                 </div>
               </div>
 
+              {/* Next button: icon only on small screens to save space */}
               <Button
                 variant="outline"
-                size="lg"
+                size="sm"
                 onClick={goToNextStep}
                 disabled={currentStepIndex === steps.length - 1}
-                className="gap-2 rounded-xl border-2 hover:bg-primary-50 hover:border-primary-300 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                aria-label={language === 'ru' ? 'Вперёд' : 'Next'}
+                className="gap-2 rounded-xl border-2 px-3 py-2 sm:px-4 sm:py-2 hover:bg-primary-50 hover:border-primary-300 active:scale-[0.98] transition-all"
               >
-                {language === 'ru' ? 'Вперёд' : 'Next'}
-                <ChevronRight className="h-5 w-5" />
+                <span className="hidden sm:inline">{language === 'ru' ? 'Вперёд' : 'Next'}</span>
+                <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
 
@@ -287,16 +311,19 @@ export default function RecipePage() {
               />
               {/* Feed Starter button for Step 1 */}
               {currentStep.id === 1 && (
-                <Link href="/dashboard/feed">
-                  <Button 
-                    variant="default" 
-                    size="lg" 
-                    className="w-full gap-2 rounded-xl shadow-md bg-primary-500 hover:bg-primary-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
-                  >
-                    <Sprout className="h-5 w-5" />
-                    {language === 'ru' ? 'Покормить Закваску' : 'Feed Starter'}
-                  </Button>
-                </Link>
+                <div className="flex justify-center">
+                  <Link href="/dashboard/feed" className="inline-block">
+                    <Button 
+                      variant="default" 
+                      size="lg" 
+                      className="w-auto min-w-[200px] sm:w-64 md:w-72 gap-2 rounded-xl shadow-md bg-primary-500 hover:bg-primary-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
+                      aria-label={language === 'ru' ? 'Покормить Закваску' : 'Feed Starter'}
+                    >
+                      <Sprout className="h-5 w-5" />
+                      {language === 'ru' ? 'Покормить Закваску' : 'Feed Starter'}
+                    </Button>
+                  </Link>
+                </div>
               )}
 
               {/* Timer controls */}
@@ -320,6 +347,7 @@ export default function RecipePage() {
                   maxSeconds={currentStep.duration_max_seconds}
                   useMaxDuration={currentTimer.useMaxDuration}
                   onToggleDuration={() => toggleDuration(currentStep.id, currentStep.duration_max_seconds!)}
+                  language={language}
                 />
               )}
 
