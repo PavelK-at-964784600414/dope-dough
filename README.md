@@ -1,4 +1,7 @@
-# 🍞 Dope Dough - Smart Sourdough Baking App# Smart Sourdough Timer
+# 🍞 Dope Dough - Sourdough Baking App with simlpe steps and automatic timers
+
+
+https://dope-dough.vercel.app
 
 
 
