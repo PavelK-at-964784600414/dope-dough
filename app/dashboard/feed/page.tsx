@@ -390,6 +390,8 @@ export default function FeedStarterPage() {
                     <div className="mb-6">
                       <TimerControl
                         stepId={5}
+                        stepTitle={language === 'ru' ? 'Ферментация закваски' : 'Starter Fermentation'}
+                        stepNumber={5}
                         totalSeconds={timerTotalSeconds}
                         remainingSeconds={localRemainingSeconds}
                         isRunning={globalTimer.isActive}

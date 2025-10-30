@@ -1,4 +1,4 @@
-# 🍞 Dope Dough - Sourdough Baking App with simlpe steps and automatic timers
+# 🍞 La Petite Sourdough - Sourdough Baking App with simlpe steps and automatic timers
 
 
 https://dope-dough.vercel.app

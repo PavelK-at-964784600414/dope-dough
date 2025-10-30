@@ -8,7 +8,25 @@ import { getAudioContext, initAudioContext } from './audioContext';
 export async function playNotificationSound(): Promise<void> {
   console.log('playNotificationSound called');
   
-  // Get or initialize AudioContext (already unlocked by user clicking Start button)
+  // Method 1: Try simple HTML5 Audio first (most reliable)
+  try {
+    console.log('Trying HTML5 Audio...');
+    const audio = new Audio('/sounds/bell.mp3');
+    audio.volume = 1.0;
+    
+    // Play the audio
+    const playPromise = audio.play();
+    
+    if (playPromise !== undefined) {
+      await playPromise;
+      console.log('✅ Bell played successfully using HTML5 Audio! 🔔');
+      return; // Success! Exit function
+    }
+  } catch (htmlAudioErr) {
+    console.warn('HTML5 Audio failed:', htmlAudioErr);
+  }
+  
+  // Method 2: Fallback to AudioContext (for better compatibility)
   let audioContext = getAudioContext();
   
   if (!audioContext) {
@@ -33,7 +51,7 @@ export async function playNotificationSound(): Promise<void> {
   
   // Try to load and play bell.mp3 using AudioContext
   try {
-    console.log('Fetching bell.mp3...');
+    console.log('Fetching bell.mp3 for AudioContext...');
     const response = await fetch('/sounds/bell.mp3');
     
     if (!response.ok) {
@@ -42,10 +60,7 @@ export async function playNotificationSound(): Promise<void> {
     
     console.log('Decoding audio data...');
     const arrayBuffer = await response.arrayBuffer();
-    console.log('ArrayBuffer size:', arrayBuffer.byteLength, 'bytes');
     const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-    
-    console.log('Audio buffer decoded - Duration:', audioBuffer.duration, 'seconds, Channels:', audioBuffer.numberOfChannels, 'Sample rate:', audioBuffer.sampleRate);
     
     console.log('Creating audio source...');
     const source = audioContext.createBufferSource();
@@ -57,9 +72,9 @@ export async function playNotificationSound(): Promise<void> {
     source.connect(gainNode);
     gainNode.connect(audioContext.destination);
     
-    console.log('Starting playback now...');
+    console.log('Starting AudioContext playback...');
     source.start(0);
-    console.log('Playing bell.mp3 successfully! 🔔 Duration:', audioBuffer.duration, 's');
+    console.log('✅ Playing bell.mp3 via AudioContext! 🔔');
     
   } catch (err) {
     console.warn('Could not play bell.mp3, using generated sound:', err);

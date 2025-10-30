@@ -7,7 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, Circle, ImageIcon } from 'lucide-react';
 import { formatDuration } from '@/lib/parseRecipe';
-import Image from 'next/image';
+import { ZoomableImage } from './ImageZoom';
+import { useState } from 'react';
 
 interface StepCardProps {
   step: RecipeStep;
@@ -31,6 +32,7 @@ export function StepCard({
   onStepClick,
   onToggleComplete
 }: StepCardProps) {
+  const [imageError, setImageError] = useState(false);
   const title = language === 'ru' ? step.title_ru : step.title_en;
   const instruction = language === 'ru' ? step.instruction_ru : step.instruction_en;
 
@@ -98,29 +100,29 @@ export function StepCard({
         </CardHeader>
 
         <CardContent className="space-y-4">
-          {/* Step Image (SEO optimized) */}
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-primary-50 to-accentMuted-light border-2 border-borderColor-light shadow-inner">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center p-4">
-                <ImageIcon className="h-14 w-14 text-primary-200 mx-auto mb-2" />
-                <p className="text-xs text-text-tertiary font-medium">
-                  {language === 'ru' 
-                    ? `Изображение для шага ${stepNumber}` 
-                    : `Step ${stepNumber} image placeholder`}
-                </p>
+          {/* Step Image (SEO optimized with zoom) */}
+          {!imageError ? (
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-primary-50 to-accentMuted-light border-2 border-borderColor-light shadow-inner">
+              <ZoomableImage
+                src={imagePath}
+                alt={imageAlt}
+                className="w-full h-full"
+              />
+            </div>
+          ) : (
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-primary-50 to-accentMuted-light border-2 border-borderColor-light shadow-inner">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center p-4">
+                  <ImageIcon className="h-14 w-14 text-primary-200 mx-auto mb-2" />
+                  <p className="text-xs text-text-tertiary font-medium">
+                    {language === 'ru' 
+                      ? `Изображение для шага ${stepNumber}` 
+                      : `Step ${stepNumber} image placeholder`}
+                  </p>
+                </div>
               </div>
             </div>
-            {/* Uncomment when images are available:
-            <Image
-              src={imagePath}
-              alt={imageAlt}
-              fill
-              className="object-cover"
-              loading="lazy"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            */}
-          </div>
+          )}
 
           <p 
             className="text-base text-text-primary leading-relaxed font-body"

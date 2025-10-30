@@ -291,7 +291,7 @@ export default function RecipePage() {
               </Button>
             </div>
 
-            {/* Current Step Content */}
+            {/* Current Step Content with Swipe Gestures */}
             <motion.div
               key={currentStep.id}
               initial={{ opacity: 0, x: 20 }}
@@ -299,6 +299,28 @@ export default function RecipePage() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
               className="space-y-4"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(event, info) => {
+                // Swipe threshold: 50 pixels
+                const swipeThreshold = 50;
+                const swipeVelocityThreshold = 500;
+                
+                // Swipe left (next step)
+                if (info.offset.x < -swipeThreshold || info.velocity.x < -swipeVelocityThreshold) {
+                  if (currentStepIndex < steps.length - 1) {
+                    goToNextStep();
+                  }
+                }
+                // Swipe right (previous step)
+                else if (info.offset.x > swipeThreshold || info.velocity.x > swipeVelocityThreshold) {
+                  if (currentStepIndex > 0) {
+                    goToPreviousStep();
+                  }
+                }
+              }}
+              style={{ touchAction: 'pan-y' }} // Allow vertical scrolling
             >
               <StepCard
                 step={currentStep}
@@ -330,6 +352,8 @@ export default function RecipePage() {
               {hasTimer && currentTimer && (
                 <TimerControl
                   stepId={currentStep.id}
+                  stepTitle={language === 'ru' ? currentStep.title_ru : currentStep.title_en}
+                  stepNumber={currentStepIndex + 1}
                   totalSeconds={currentTimer.totalSeconds}
                   remainingSeconds={currentTimer.remainingSeconds}
                   isRunning={currentTimer.isRunning}

@@ -3,13 +3,16 @@
 import { useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import { Progress } from './ui/progress';
-import { Play, Pause, RotateCcw, Timer } from 'lucide-react';
+import { Play, Pause, RotateCcw, Timer, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { formatDuration } from '@/lib/parseRecipe';
 import { initAudioContext } from '@/lib/audioContext';
+import { createTimerCalendarEvent, supportsCalendarEvents } from '@/lib/calendarUtils';
 
 interface TimerControlProps {
   stepId: number;
+  stepTitle?: string;
+  stepNumber?: number;
   totalSeconds: number;
   remainingSeconds: number;
   isRunning: boolean;
@@ -31,6 +34,8 @@ interface TimerControlProps {
  */
 export function TimerControl({
   stepId,
+  stepTitle,
+  stepNumber,
   totalSeconds,
   remainingSeconds,
   isRunning,
@@ -48,6 +53,22 @@ export function TimerControl({
 }: TimerControlProps) {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const hasCalledComplete = useRef<boolean>(false);
+  
+  // Handle adding timer to calendar
+  const handleAddToCalendar = () => {
+    if (!supportsCalendarEvents()) {
+      alert(language === 'ru' 
+        ? 'Ваш браузер не поддерживает скачивание календарных событий' 
+        : 'Your browser does not support calendar event downloads');
+      return;
+    }
+    
+    const title = stepTitle || `${language === 'ru' ? 'Шаг' : 'Step'} ${stepNumber || stepId}`;
+    const number = stepNumber || stepId;
+    const duration = remainingSeconds > 0 ? remainingSeconds : totalSeconds;
+    
+    createTimerCalendarEvent(title, number, duration, language);
+  };
 
   // Timer tick effect
   useEffect(() => {
@@ -155,30 +176,43 @@ export function TimerControl({
       <Progress value={progressPercentage} className="h-3 bg-primary-200" />
 
       {/* Control buttons */}
-      <div className="flex gap-3">
-        {!isRunning && !isCompleted && (
-          <Button 
-            onClick={() => {
-              initAudioContext(); // Initialize audio on user interaction
-              onStart();
-            }} 
-            className="flex-1 rounded-xl bg-primary-500 hover:bg-primary-600 text-white shadow-md hover:shadow-lg transition-all" 
-            size="lg"
-          >
-            <Play className="mr-2 h-5 w-5" />
-            {language === 'ru' ? 'Старт' : 'Start'}
-          </Button>
-        )}
+      <div className="flex flex-col gap-3">
+        <div className="flex gap-3">
+          {!isRunning && !isCompleted && (
+            <Button 
+              onClick={() => {
+                initAudioContext(); // Initialize audio on user interaction
+                onStart();
+              }} 
+              className="flex-1 rounded-xl bg-primary-500 hover:bg-primary-600 text-white shadow-md hover:shadow-lg transition-all" 
+              size="lg"
+            >
+              <Play className="mr-2 h-5 w-5" />
+              {language === 'ru' ? 'Старт' : 'Start'}
+            </Button>
+          )}
 
-        {isRunning && (
-          <Button onClick={onPause} variant="outline" className="flex-1 rounded-xl border-2 border-primary-300 hover:bg-primary-50 hover:border-primary-400 transition-all" size="lg">
-            <Pause className="mr-2 h-5 w-5" />
-            {language === 'ru' ? 'Пауза' : 'Pause'}
-          </Button>
-        )}
+          {isRunning && (
+            <Button onClick={onPause} variant="outline" className="flex-1 rounded-xl border-2 border-primary-300 hover:bg-primary-50 hover:border-primary-400 transition-all" size="lg">
+              <Pause className="mr-2 h-5 w-5" />
+              {language === 'ru' ? 'Пауза' : 'Pause'}
+            </Button>
+          )}
 
-        <Button onClick={onReset} variant="outline" size="lg" className="rounded-xl border-2 border-borderColor hover:bg-surface hover:border-primary-300 transition-all px-4">
-          <RotateCcw className="h-5 w-5" />
+          <Button onClick={onReset} variant="outline" size="lg" className="rounded-xl border-2 border-borderColor hover:bg-surface hover:border-primary-300 transition-all px-4">
+            <RotateCcw className="h-5 w-5" />
+          </Button>
+        </div>
+        
+        {/* Add to Calendar button */}
+        <Button 
+          onClick={handleAddToCalendar}
+          variant="outline" 
+          size="lg"
+          className="w-full rounded-xl border-2 border-secondary-300 hover:bg-secondary-50 hover:border-secondary-400 transition-all gap-2"
+        >
+          <Calendar className="h-5 w-5" />
+          {language === 'ru' ? 'Добавить в Календарь' : 'Add to Calendar'}
         </Button>
       </div>
     </div>

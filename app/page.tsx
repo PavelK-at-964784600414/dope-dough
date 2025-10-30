@@ -61,7 +61,7 @@ export default function HomePage() {
 
           <div className="text-center space-y-4">
             <h1 className="text-5xl font-bold text-gray-900 animate-fade-in">
-              Dope Dough
+              La Petite Sourdough
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               {t.subtitle}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "name": "Dope Dough Design System",
+  "name": "La Petite Sourdough Design System",
   "version": "1.0.0",
   "description": "Design tokens for a warm, friendly sourdough app with rounded aesthetics",
   

@@ -34,7 +34,7 @@ export function TopNav({
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="drop-shadow-sm"
-                aria-label="Dope Dough logo"
+                aria-label="La Petite Sourdough logo"
               >
                 {/* Bread loaf with bubbles */}
                 <ellipse cx="20" cy="28" rx="16" ry="10" fill="#D96D3A" opacity="0.2" />
@@ -63,7 +63,7 @@ export function TopNav({
             </div>
             <div>
               <h1 className="font-display text-xl font-bold text-primary-600">
-                Dope Dough
+                La Petite Sourdough
               </h1>
               <p className="text-xs text-text-secondary hidden sm:block">
                 Your baking companion

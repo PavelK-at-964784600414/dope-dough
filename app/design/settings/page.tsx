@@ -183,7 +183,7 @@ export default function SettingsPage() {
         <Card variant="soft">
           <CardContent className="text-center space-y-2">
             <h3 className="font-display font-semibold text-lg text-text-primary">
-              Dope Dough
+              La Petite Sourdough
             </h3>
             <p className="text-sm text-text-secondary">
               Your friendly companion for sourdough baking. Made with love for bakers everywhere. 🍞

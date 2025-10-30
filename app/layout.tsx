@@ -16,7 +16,7 @@ const fredoka = Fredoka({
 });
 
 export const metadata: Metadata = {
-  title: 'Dope Dough',
+  title: 'La Petite Sourdough',
   description: 'Step-by-step sourdough bread recipe with intelligent timers and notifications',
 };
 
