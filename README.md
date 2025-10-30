@@ -609,3 +609,4 @@ MIT - Feel free to use this project for personal or commercial purposes.
 ## Credits
 
 Recipe adapted from traditional sourdough baking methods. Built with modern web technologies for an optimal baking experience.
+
