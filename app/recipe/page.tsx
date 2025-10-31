@@ -280,14 +280,19 @@ export default function RecipePage() {
                 </p>
                 <div className="flex gap-1 mt-3 flex-wrap justify-center">
                   {steps.map((_, idx) => (
-                    <div
+                    <button
                       key={idx}
-                      className={`rounded-full transition-all duration-300 ${
+                      onClick={() => {
+                        setCurrentStepIndex(idx);
+                        setCurrentStep(idx);
+                      }}
+                      aria-label={`${language === 'ru' ? 'Перейти к шагу' : 'Go to step'} ${idx + 1}`}
+                      className={`rounded-full transition-all duration-300 cursor-pointer hover:scale-125 ${
                         idx === currentStepIndex
                           ? 'bg-primary-500 ring-4 ring-primary-100 scale-110 h-2.5 w-2.5 sm:h-2.5 sm:w-2.5'
                           : progress.completedSteps.includes(steps[idx].id)
-                          ? 'bg-success h-2.5 w-2.5 sm:h-2.5 sm:w-2.5'
-                          : 'bg-borderColor h-2 w-2 sm:h-2.5 sm:w-2.5'
+                          ? 'bg-success h-2.5 w-2.5 sm:h-2.5 sm:w-2.5 hover:bg-success-dark'
+                          : 'bg-borderColor h-2 w-2 sm:h-2.5 sm:w-2.5 hover:bg-borderColor-dark'
                       }`}
                     />
                   ))}
