@@ -197,27 +197,40 @@ interface ZoomableImageProps {
  */
 export function ZoomableImage({ src, alt, className = '' }: ZoomableImageProps) {
   const [isZoomOpen, setIsZoomOpen] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   return (
     <>
       <div
-        className={`relative cursor-zoom-in group ${className}`}
+        className={`relative cursor-zoom-in ${className}`}
         onClick={() => setIsZoomOpen(true)}
+        onMouseEnter={() => setShowOverlay(true)}
+        onMouseLeave={() => setShowOverlay(false)}
+        style={{ isolation: 'isolate' }} // Prevent flickering from parent elements
       >
         <Image
           src={src}
           alt={alt}
           fill
-          className="object-cover transition-transform group-hover:scale-105"
+          className="object-cover"
           loading="lazy"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          draggable={false}
         />
         
-        {/* Zoom overlay */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
-            <ZoomIn className="h-6 w-6 text-gray-800" />
-          </div>
+        {/* Zoom icon overlay - stable, no transitions */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          style={{
+            backgroundColor: showOverlay ? 'rgba(0, 0, 0, 0.4)' : 'transparent',
+            willChange: 'auto' // Disable will-change to prevent flickering
+          }}
+        >
+          {showOverlay && (
+            <div className="bg-white rounded-full p-3 shadow-xl">
+              <ZoomIn className="h-6 w-6 text-gray-800" />
+            </div>
+          )}
         </div>
       </div>
 
