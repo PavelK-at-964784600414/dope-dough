@@ -48,8 +48,24 @@ export default function RecipePage() {
     resetProgress
   } = useRecipeStore();
 
+  // Track if store has been hydrated from localStorage
+  const [hasHydrated, setHasHydrated] = useState(false);
+
+  // Wait for store hydration
+  useEffect(() => {
+    // Small delay to ensure Zustand persist has loaded from localStorage
+    const timer = setTimeout(() => {
+      setHasHydrated(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   // Load recipe data
   useEffect(() => {
+    // Don't initialize timers until store has hydrated from localStorage
+    if (!hasHydrated) return;
+
     async function loadRecipe() {
       try {
         setLoading(true);
@@ -59,7 +75,7 @@ export default function RecipePage() {
         if (data.steps && Array.isArray(data.steps)) {
           setSteps(data.steps);
 
-          // Initialize timers for steps with durations
+          // Initialize timers for steps with durations ONLY if not already in store
           data.steps.forEach((step: RecipeStep) => {
             if (step.suggestedTimerSeconds && !timers[step.id]) {
               initTimer(step.id, step.suggestedTimerSeconds, step.duration_max_seconds);
@@ -74,7 +90,7 @@ export default function RecipePage() {
     }
 
     loadRecipe();
-  }, []);
+  }, [hasHydrated]);
 
   // Handle timer completion
   const handleTimerComplete = useCallback((stepId: number) => {

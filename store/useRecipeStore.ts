@@ -356,16 +356,34 @@ export const useRecipeStore = create<RecipeStore>()(
       name: 'sourdough:timers', // localStorage key from ramp.json
       storage: createJSONStorage(() => ({
         getItem: (name) => {
+          // Check if we're in browser environment
+          if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+            return null;
+          }
+          
           // Rate limit storage access
           if (!storageRateLimiter.isAllowed('storage-read')) {
             console.warn('[Security] Storage read rate limit exceeded');
             return null;
           }
           
-          const item = safeGetItem(name, isValidTimerData);
-          return item ? JSON.stringify(item) : null;
+          try {
+            // Get raw string from localStorage (Zustand expects the raw string)
+            const item = localStorage.getItem(name);
+            return item;
+          } catch (error) {
+            if (process.env.NODE_ENV === 'development') {
+              console.error('[Security] Failed to read from storage:', error);
+            }
+            return null;
+          }
         },
         setItem: (name, value) => {
+          // Check if we're in browser environment
+          if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+            return;
+          }
+          
           // Rate limit storage writes
           if (!storageRateLimiter.isAllowed('storage-write')) {
             console.warn('[Security] Storage write rate limit exceeded');
@@ -373,17 +391,31 @@ export const useRecipeStore = create<RecipeStore>()(
           }
           
           try {
-            const parsed = JSON.parse(value);
-            safeSetItem(name, parsed);
+            // Validate the key format
+            if (!/^(sourdough|dope-dough):[a-z0-9-]+$/i.test(name)) {
+              console.error('[Security] Invalid localStorage key format:', name);
+              return;
+            }
+            
+            // Set the raw string to localStorage (Zustand sends already stringified data)
+            localStorage.setItem(name, value);
           } catch (error) {
-            console.error('[Security] Failed to save to storage:', error);
+            if (process.env.NODE_ENV === 'development') {
+              console.error('[Security] Failed to save to storage:', error);
+            }
           }
         },
         removeItem: (name) => {
+          if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+            return;
+          }
+          
           try {
             localStorage.removeItem(name);
           } catch (error) {
-            console.error('[Security] Failed to remove from storage:', error);
+            if (process.env.NODE_ENV === 'development') {
+              console.error('[Security] Failed to remove from storage:', error);
+            }
           }
         }
       })),
