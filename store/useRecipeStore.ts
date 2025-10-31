@@ -1,5 +1,11 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import {
+  safeGetItem,
+  safeSetItem,
+  isValidTimerData,
+  storageRateLimiter
+} from '@/lib/security';
 
 /**
  * Timer state for a single step
@@ -47,7 +53,7 @@ interface RecipeStore {
 }
 
 /**
- * Zustand store with localStorage persistence
+ * Zustand store with localStorage persistence and security validation
  * Keys: sourdough:progress, sourdough:timers (from ramp.json)
  */
 export const useRecipeStore = create<RecipeStore>()(
@@ -62,12 +68,24 @@ export const useRecipeStore = create<RecipeStore>()(
 
       // Progress actions
       setCurrentStep: (index) => {
+        // Validate index
+        if (typeof index !== 'number' || index < 0 || index > 100) {
+          console.error('[Security] Invalid step index:', index);
+          return;
+        }
+        
         set((state) => ({
           progress: { ...state.progress, currentStepIndex: index }
         }));
       },
 
       markStepCompleted: (stepId) => {
+        // Validate stepId
+        if (typeof stepId !== 'number' || stepId < 1 || stepId > 100) {
+          console.error('[Security] Invalid step ID:', stepId);
+          return;
+        }
+        
         set((state) => ({
           progress: {
             ...state.progress,
@@ -77,6 +95,12 @@ export const useRecipeStore = create<RecipeStore>()(
       },
 
       markStepIncomplete: (stepId) => {
+        // Validate stepId
+        if (typeof stepId !== 'number' || stepId < 1 || stepId > 100) {
+          console.error('[Security] Invalid step ID:', stepId);
+          return;
+        }
+        
         set((state) => ({
           progress: {
             ...state.progress,
@@ -330,10 +354,73 @@ export const useRecipeStore = create<RecipeStore>()(
     }),
     {
       name: 'sourdough:timers', // localStorage key from ramp.json
+      storage: createJSONStorage(() => ({
+        getItem: (name) => {
+          // Rate limit storage access
+          if (!storageRateLimiter.isAllowed('storage-read')) {
+            console.warn('[Security] Storage read rate limit exceeded');
+            return null;
+          }
+          
+          const item = safeGetItem(name, isValidTimerData);
+          return item ? JSON.stringify(item) : null;
+        },
+        setItem: (name, value) => {
+          // Rate limit storage writes
+          if (!storageRateLimiter.isAllowed('storage-write')) {
+            console.warn('[Security] Storage write rate limit exceeded');
+            return;
+          }
+          
+          try {
+            const parsed = JSON.parse(value);
+            safeSetItem(name, parsed);
+          } catch (error) {
+            console.error('[Security] Failed to save to storage:', error);
+          }
+        },
+        removeItem: (name) => {
+          try {
+            localStorage.removeItem(name);
+          } catch (error) {
+            console.error('[Security] Failed to remove from storage:', error);
+          }
+        }
+      })),
       partialize: (state) => ({
         progress: state.progress,
         timers: state.timers
-      })
+      }),
+      // Merge strategy to handle corrupted data
+      merge: (persistedState, currentState) => {
+        // Validate persisted state
+        if (!persistedState || typeof persistedState !== 'object') {
+          console.warn('[Security] Invalid persisted state, using defaults');
+          return currentState;
+        }
+        
+        const state = persistedState as Partial<RecipeStore>;
+        
+        // Validate progress
+        const progress = state.progress && 
+          typeof state.progress === 'object' &&
+          typeof (state.progress as RecipeProgress).currentStepIndex === 'number' &&
+          Array.isArray((state.progress as RecipeProgress).completedSteps)
+          ? state.progress
+          : currentState.progress;
+        
+        // Validate timers
+        const timers = state.timers &&
+          typeof state.timers === 'object'
+          ? state.timers
+          : currentState.timers;
+        
+        return {
+          ...currentState,
+          progress,
+          timers
+        };
+      }
     }
   )
 );

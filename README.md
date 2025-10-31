@@ -1,612 +1,341 @@
-# 🍞 La Petite Sourdough - Sourdough Baking App with simlpe steps and automatic timers
+# 🍞 La Petite Sourdough - Sourdough Baking App with Simple Steps and Automatic Timers
 
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
 
-https://dope-dough.vercel.app
+**Live Demo**: [https://la-petite-sourdough.vercel.app](https://la-petite-sourdough.vercel.app)
 
+A modern, intuitive sourdough baking companion with automatic timers, progress tracking, calendar integration, and a complete 16-step recipe guide with visual step-by-step images.
 
+## ✨ Features
 
-A comprehensive sourdough bread baking companion app built with Next.js 14, featuring step-by-step recipes, starter management, timers, and a baking journal.A Next.js application th## 📝 Adding the Bell Sound (Optional)
+### 📖 Recipe Management
+- **16-Step Recipe**: Complete sourdough guide from starter to baked loaf
+- **Step-by-Step Images**: Full-color photo for every recipe step
+- **Image Zoom**: Click any image to view full-screen with zoom capabilities
+- **Step Navigation**: Previous/next buttons with progress tracking
+- **Progress Tracking**: Visual indicators and completion percentage
+- **Emoji-Enhanced Instructions**: 50+ contextual emojis (💧🌾🔥⏰) for visual clarity
+- **Formatted Steps**: Bullet points with clear line breaks for easy reading
+- **Bilingual Support**: Full Russian/English translations
 
+### ⏱️ Smart Timers
+- **Multiple Timers**: Independent timers for each recipe step
+- **Background Tracking**: Timers continue even when tab is inactive
+- **Audio Notifications**: Bell sound with automatic fallback system
+- **Flexible Durations**: Min/max ranges for steps with variable times
+- **Calendar Integration**: Add any timer to your device calendar with one click
 
+### 📅 Calendar Integration
+- **Add to Calendar Button**: On every timer for easy scheduling
+- **Platform Detection**: Automatically opens Google Calendar (Android), Apple Calendar (iOS), or web interface (desktop)
+- **No Downloads**: Works with native calendar apps via URL schemes
+- **Smart Reminders**: Calendar events include step title, duration, and notification reminders
+- **Bilingual Events**: Calendar descriptions in both languages
 
-![Made with Next.js](https://img.shields.io/badge/Next.js-14-black)The app now includes a **generated bell sound** as a fallback using Web Audio API, so audio notifications work out of the box!
+### 🖼️ Image Zoom & Gestures
+- **Click-to-Zoom**: Tap any step image to view full-screen
+- **Pinch-to-Zoom**: Mobile gesture support (1x-5x scale)
+- **Double-Tap**: Quick toggle between normal and 2.5x zoom
+- **Drag-to-Pan**: Move around zoomed images
+- **Mobile Optimized**: Touch gestures designed for cooking with messy hands
 
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+### 📏 International Measurements
+- **Dual Temperature Units**: All temps shown in Celsius and Fahrenheit (e.g., 250°C / 480°F)
+- **Weight Conversions**: Metric and imperial weights (grams and ounces)
+- **Accessibility**: Makes recipe usable for international audience
 
-![License](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey)However, for a more pleasant sound, you can add a real bell.mp3 file:
+### 🏺 Starter Management
+- **Feed Workflow**: Step-by-step starter feeding process
+- **Visual Progress**: Animated jar with feeding stages
+- **7-Day Guide**: Complete starter creation walkthrough
+- **Smart Timing**: 4-8 hour fermentation timer with persistence
 
+### 📝 Baking Journal
+- **Session Notes**: Record observations for each bake
+- **Categorization**: Success/failure/learning tags
+- **Metadata Tracking**: Date, time, and custom notes
+- **Persistent Storage**: All notes saved in localStorage
 
-
-## ✨ Features1. Download a free bell sound from:
-
-   - https://freesound.org/people/InspectorJ/sounds/411089/ (Recommended: Service Bell)
-
-### 🥖 Recipe Management   - https://mixkit.co/free-sound-effects/bell/
-
-- **16-Step Sourdough Recipe**: Detailed instructions from mixing to baking   - https://pixabay.com/sound-effects/search/bell/
-
-- **Step-by-step Navigation**: Easy-to-follow cards with timers   
-
-- **Quick Jump**: Navigate directly to any step2. Save as: `public/sounds/bell.mp3`
-
-- **Progress Tracking**: Automatic completion tracking
-
-- **Bilingual Support**: Full English/Russian translation3. Refresh the page - timer completions will now use your custom sound
-
-
-
-### ⏰ Smart Timers**Current behavior:**
-
-- **Multiple Timers**: Run recipe and starter timers simultaneously- ✅ Tries to load `public/sounds/bell.mp3` first
-
-- **Background Tracking**: Timers persist across page navigation- ✅ Falls back to generated bell sound (Web Audio API) if file not found
-
-- **Audio Notifications**: Bell sound alerts when timers complete- ✅ Works without any manual setup
-
-- **Dashboard Integration**: View all active timers from dashboard
-
-- **Flexible Durations**: Min/max options for fermentation times**To test the sound immediately:**
-
-Open browser console and run:
-
-### 🌾 Starter Management```javascript
-
-- **Feed Starter Workflow**: 5-step feeding processconst audio = new Audio('/sounds/bell.mp3');
-
-- **Visual Progress**: Animated starter jar showing growthaudio.volume = 0.7;
-
-- **7-Day Starter Guide**: Complete beginner's guideaudio.play();
-
-- **Activity Tracking**: Monitor starter health and readiness```
-
-
-
-### 📝 Baking JournalIf you hear nothing, the file doesn't exist yet, but the fallback tone will play when timers complete.ovides step-by-step guidance for baking sourdough bread with intelligent timers, browser notifications, and persistent progress tracking.
-
-- **Note Taking**: Log feedings, baking sessions, observations
-
-- **Categorization**: 4 note types with unique icons and colors## Features
-
-- **Metadata**: Temperature and ratio tracking for feedings
-
-- **Time Stamps**: Smart "time ago" formatting- ⏱️ **Smart Timers** - Automatic countdown timers for each recipe step with min/max duration ranges
-
-- **Persistent Storage**: All notes saved to localStorage- 🔔 **Multi-Channel Notifications** - Toast popups, browser notifications, and bell sound alerts
-
-- 💾 **Persistent State** - Progress and timer states saved to localStorage (keys: `sourdough:progress`, `sourdough:timers`)
-
-### 💡 Tips & Help- 🌐 **Bilingual Support** - Recipe available in English and Russian
-
-- **Quick Tips**: 6 essential sourdough tips with icons- 🎨 **Modern UI** - Built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, and shadcn/ui
-
-- **Troubleshooting Guide**: 6 common problems with solutions- 📱 **Mobile-First Design** - Responsive layout optimized for all devices
-
-- **Severity Levels**: Color-coded issue importance- ⏰ **Background Timer Support** - Timers continue counting and notify you even when you switch tabs or apps
-
-- **Pro Baker Secrets**: 6 advanced techniques
-
-## Tech Stack
+### 💡 Tips & Help
+- **Quick Tips**: Beginner-friendly sourdough advice
+- **Troubleshooting**: Common problems and solutions
+- **Pro Secrets**: Advanced techniques for better bread
 
 ### 🎨 Design System
-
-- **Warm Color Palette**: Bakery-inspired warm beige background- **Framework**: Next.js 14+ (App Router)
-
-- **Custom Components**: Reusable Card, Button, Timeline components- **Language**: TypeScript
-
-- **Fredoka Font**: Friendly display typography- **Styling**: Tailwind CSS
-
-- **Responsive Design**: Mobile-first, works on all devices- **Animations**: Framer Motion
-
-- **Smooth Animations**: Framer Motion transitions- **State Management**: Zustand with localStorage persistence
-
+- **Warm Color Palette**: Cozy, bakery-inspired theme
+- **Custom Components**: shadcn/ui with Radix primitives
+- **Smooth Animations**: Framer Motion transitions
+- **State Management**: Zustand with localStorage persistence
 - **Icons**: Lucide React
+- **Footer**: Copyright, contact links, and illustration credits
 
-### 🌍 Internationalization- **UI Components**: shadcn/ui (Radix UI primitives)
-
+### 🌍 Internationalization
 - **Language Toggle**: Switch between English/Russian instantly
-
-- **Global State**: Zustand-powered language persistence## Installation
-
+- **Global State**: Zustand-powered language persistence
 - **Complete Translation**: Every page and component translated
-
-1. **Clone or navigate to the project directory**
 
 ## 🚀 Getting Started
 
-```bash
-
-### Prerequisitescd /Users/pavelklug/Documents/Code/nextjs/smart-sourdough
-
-```
+### Prerequisites
 
 - Node.js 18+ 
+- npm or yarn
 
-- npm or yarn2. **Install dependencies**
+### Installation
 
-
-
-### Installation```bash
-
-npm install
-
-1. Clone the repository```
+1. **Clone or navigate to the project directory**
 
 ```bash
-
-git clone https://github.com/PavelK-at-964784600414/dope-dough.gitRequired packages will be installed:
-
-cd dope-dough- next, react, react-dom
-
-```- @types/node, @types/react, @types/react-dom
-
-- typescript
-
-2. Install dependencies- tailwindcss, postcss, autoprefixer
-
-```bash- zustand
-
-npm install- framer-motion
-
-```- lucide-react
-
-- @radix-ui/react-slot, @radix-ui/react-progress
-
-3. Run the development server- class-variance-authority, clsx, tailwind-merge
-
-```bash
-
-npm run dev3. **Add a bell sound** (Optional)
-
+cd /Users/pavelklug/Documents/Code/nextjs/smart-sourdough
 ```
 
-Place a bell sound file at `public/sounds/bell.mp3`. If not provided, the app will still work but without audio alerts. Free sounds available at:
+2. **Install dependencies**
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser- https://freesound.org/
+```bash
+npm install
+```
 
+Required packages will be installed:
+- next, react, react-dom
+- @types/node, @types/react, @types/react-dom
+- typescript
+- tailwindcss, postcss, autoprefixer
+- zustand
+- framer-motion
+- lucide-react
+- @radix-ui/react-slot, @radix-ui/react-progress
+- class-variance-authority, clsx, tailwind-merge
+
+3. **Add a custom bell sound** (Optional Enhancement)
+
+The app includes an automatic audio notification system with multiple fallbacks. For a custom bell sound, place your audio file at `public/sounds/bell.mp3`. 
+
+**Built-in Fallback System:**
+- Primary: HTML5 Audio (bell.mp3 if available)
+- Secondary: Web Audio API with fetch
+- Tertiary: Generated beep sound
+
+This ensures notifications always work, even without a custom sound file. Free bell sounds available at:
+- https://freesound.org/
 - https://mixkit.co/free-sound-effects/bell/
-
-## 📁 Project Structure
 
 4. **Run the development server**
 
+```bash
+npm run dev
 ```
 
-smart-sourdough/```bash
+5. **Open the app**
 
-├── app/                          # Next.js App Router pagesnpm run dev
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-│   ├── dashboard/               # Dashboard and sub-pages```
-
-│   │   ├── feed/               # Starter feeding workflow
-
-│   │   ├── notes/              # Baking journal5. **Open the app**
-
-│   │   ├── starter-guide/      # 7-day starter guide
-
-│   │   ├── tips/               # Tips & troubleshootingNavigate to [http://localhost:3000](http://localhost:3000)
-
-│   │   └── page.tsx            # Main dashboard
-
-│   ├── recipe/                  # Main recipe page## Manual Testing
-
-│   └── page.tsx                 # Landing page
-
-├── components/                   # React components### Test 1: Basic Timer Functionality
-
-│   ├── design-system/          # Reusable UI components
-
-│   │   ├── Button.tsx1. Click "Start Baking" on the landing page
-
-│   │   ├── Card.tsx2. Find "Step 1: Activate the starter" (4 hours timer)
-
-│   │   ├── TopNav.tsx3. Click "Start" button on the timer
-
-│   │   ├── BottomTab.tsx4. Verify:
-
-│   │   └── ...   - Timer countdown begins (displays remaining time)
-
-│   ├── StepCard.tsx            # Recipe step display   - Progress bar animates
-
-│   ├── TimerControl.tsx        # Timer UI component   - "Pause" button appears
-
-│   └── ...5. Click "Pause" - timer should stop
-
-├── hooks/                        # Custom React hooks6. Click "Start" again - timer resumes from paused time
-
-│   ├── useLanguage.ts          # Global language state7. Click reset icon - timer resets to 4 hours
-
-│   ├── useTimer.ts             # Feed timer state
-
-│   └── useBackgroundTimers.ts  # Recipe timer tracking### Test 2: Simulate Timer Completion
-
-├── store/                        # Zustand state management
-
-│   └── useRecipeStore.ts       # Recipe progress & timersTo quickly test completion without waiting:
-
-├── lib/                          # Utility functions
-
-│   ├── parseRecipe.ts          # Recipe markdown parser1. Open browser DevTools (F12)
-
-│   └── audioUtils.ts           # Notification sounds2. Go to Console tab
-
-├── sourdough-data/              # Recipe data3. Run this code to set a timer to 5 seconds:
-
-│   ├── recipe.md               # Recipe content (JSON)
-
-│   └── ramp.json               # Feeding schedule data```javascript
-
-└── public/                       # Static assets// Find a timer in localStorage
-
-    └── sounds/const stored = JSON.parse(localStorage.getItem('sourdough:timers'));
-
-        └── bell.mp3            # Timer notification sound// Set step 1's timer to 5 seconds remaining
-
-```stored.state.timers[1].remainingSeconds = 5;
-
-stored.state.timers[1].totalSeconds = 5;
-
-## 🛠️ Tech StacklocalStorage.setItem('sourdough:timers', JSON.stringify(stored));
-
-// Reload page
-
-- **Framework**: Next.js 14.2.33 (App Router)location.reload();
-
-- **Language**: TypeScript 5```
-
-- **Styling**: Tailwind CSS
-
-- **State Management**: Zustand with persistence4. Start the timer for Step 1
-
-- **Animations**: Framer Motion5. After 5 seconds, verify:
-
-- **Icons**: Lucide React   - Toast notification appears (top-right corner)
-
-- **Fonts**: Fredoka (display), Inter (body)   - Browser notification appears (if permission granted)
-
-   - Bell sound plays (if bell.mp3 exists)
-
-## 🎯 Key Features Explained   - Step is marked as completed (green checkmark)
-
-   - Timer displays "Completed!" message
-
-### Timer System
-
-The app uses two timer systems:### Test 3: Browser Notifications
-
-1. **Global Feed Timer** (`useTimer` hook) - Single 4-8 hour fermentation timer
-
-2. **Recipe Timers** (`useRecipeStore`) - Per-step timers with different durations1. When you first start any timer, browser will request notification permission
-
-2. Click "Allow" in the permission prompt
-
-Both systems:3. Complete a timer (use Test 2 method)
-
-- Use `startTime` timestamps for accurate background tracking4. Verify browser notification appears with:
-
-- Persist to localStorage   - Title: "Timer Completed! 🎉"
-
-- Play audio notifications on completion   - Body: "Step [number]: [step title]"
-
-- Display simultaneously on dashboard   - Notification is clickable and brings window to focus
-
-
-
-### Recipe Parser**Troubleshooting Notifications:**
-
-Recipes are stored in markdown format with embedded JSON:- If notification doesn't appear, check browser notification settings
-
-```json- In Chrome: Settings → Privacy and Security → Site Settings → Notifications
-
-{- Ensure notifications are allowed for localhost:3000
-
-  "id": 1,
-
-  "title_en": "Mix Ingredients",### Test 4: localStorage Persistence
-
-  "title_ru": "Смешать Ингредиенты",
-
-  "instruction_en": "Combine flour, water...",1. Start multiple timers (e.g., Steps 1, 2, and 4)
-
-  "instruction_ru": "Соедините муку, воду...",2. Pause Step 2 timer at a specific time (note the remaining time)
-
-  "duration_min": 30,3. Close the browser tab completely
-
-  "duration_max": 404. Reopen [http://localhost:3000/recipe](http://localhost:3000/recipe)
-
-}5. Verify:
-
-```   - All timer states are restored
-
-   - Step 2 timer shows the same remaining time
-
-### Language System   - Completed steps remain marked as completed
-
-Global language state with Zustand:   - Progress counter is accurate
-
-- Stored in `localStorage` as `dope-dough:language`
-
-- Available via `useLanguage()` hook on any page**Check localStorage manually:**
-
-- Instant switching without page reload```javascript
-
-// In browser console
-
-## 📱 Routesconsole.log(JSON.parse(localStorage.getItem('sourdough:timers')));
-
-```
-
-- `/` - Landing page
-
-- `/dashboard` - Main dashboardShould show:
-
-- `/dashboard/feed` - Starter feeding workflow```json
-
-- `/dashboard/starter-guide` - 7-day starter creation guide{
-
-- `/dashboard/notes` - Baking journal  "state": {
-
-- `/dashboard/tips` - Tips & troubleshooting    "progress": {
-
-- `/recipe` - 16-step sourdough recipe      "currentStepIndex": 0,
-
-      "completedSteps": [1, 2]
-
-## 🎨 Design Tokens    },
-
-    "timers": {
-
-```css      "1": { "stepId": 1, "remainingSeconds": 3600, ... }
-
---warm-bg: #FBF6EE        /* Warm beige background */    }
-
---primary: #D96D3A        /* Orange */  },
-
---secondary: #76A98B      /* Green */  "version": 0
-
---text-primary: #2D2D2D   /* Dark gray */}
-
---text-secondary: #6B7280 /* Medium gray */```
-
-```
-
-### Test 5: Min/Max Duration Toggle
-
-## 📄 License
-
-Steps with duration ranges (e.g., Step 2: 6-8 hours) have a toggle button:
-
-This project is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License** (CC BY-SA 4.0).
-
-1. Navigate to Step 2 "Prepare the levain"
-
-### What this means:2. Timer initially shows "Min: 6h" button
-
-3. Click the button
-
-✅ **You CAN:**4. Verify:
-
-- Use this app for personal or commercial purposes   - Button changes to "Max: 8h"
-
-- Modify and build upon this code   - Timer resets to 8 hours (28800 seconds)
-
-- Share and redistribute5. Click again - timer resets back to 6 hours (21600 seconds)
-
-
-
-⚠️ **You MUST:**### Test 6: Bulk Controls
-
-- **Credit Pavel Klug** as the original author
-
-- Provide a link to this repository1. Start 3-4 individual timers
-
-- Share your modifications under the same license2. Click "Pause All" button at the top
-
-- **If you profit from this app**, you must credit prominently and share your derivative work3. Verify all running timers pause simultaneously
-
-4. Click "Start All Timers"
-
-See the [LICENSE](LICENSE) file for full details.5. Verify all non-completed timers start together
-
-6. Click "Reset All"
-
-## 👨‍💻 Author7. Confirm dialog appears
-
-8. Accept - all timers reset and progress clears
-
-**Pavel Klug**
-
-### Test 7: Long-Running Timers
-
-- GitHub: [@PavelK-at-964784600414](https://github.com/PavelK-at-964784600414)
-
-- Repository: [dope-dough](https://github.com/PavelK-at-964784600414/dope-dough)Some steps have very long timers (e.g., Step 7: 16 hours cold proof):
-
-
-
-## 🙏 Acknowledgments1. Start Step 7 timer
-
-2. Verify timer displays "16h" correctly
-
-- Sourdough baking community for recipe inspiration3. Check that timer persists through:
-
-- Next.js team for the amazing framework   - Browser refresh
-
-- Open source contributors   - Computer sleep/wake
-
-   - Browser restart
-
-## 🐛 Found a Bug?4. **Switch to another tab or app** for 1-2 minutes
-
-5. Return to the recipe tab
-
-Please open an issue on GitHub with:6. Verify the timer has progressed correctly during your absence
-
-- Description of the bug7. If a timer completed while away, you'll get the notification immediately upon returning
-
-- Steps to reproduce
-
-- Expected vs actual behavior**Background Timer Behavior:**
-
-- Screenshots if applicable- Uses timestamp-based tracking (not dependent on `setInterval`)
-
-- Calculates elapsed time when page becomes visible: `elapsed = now - startTime`
-
-## 💡 Feature Requests- Automatically triggers notifications for timers that completed while tab was inactive
-
-- Works even after computer sleep/wake cycles
-
-Have an idea? Open an issue with the "enhancement" label!
-
-### Test 8: Language Switching
-
----
-
-1. On recipe page, click "RU" button (top-right)
-
-**Made with ❤️ and sourdough** by Pavel Klug2. Verify:
-
-   - All step titles and instructions switch to Russian
-   - UI labels remain functional
-3. Click "EN" - content switches back to English
-
-### Test 9: Mobile Responsiveness
-
-1. Open DevTools and toggle device emulation (Ctrl+Shift+M)
-2. Test on various screen sizes:
-   - Mobile (320px, 375px, 414px)
-   - Tablet (768px, 1024px)
-3. Verify:
-   - Cards stack vertically on mobile
-   - Buttons remain accessible
-   - Timer controls are thumb-friendly
-   - Notifications don't overflow screen
-
-### Test 10: Multiple Overlapping Timers
-
-1. Start timers for Steps 1, 2, and 3 simultaneously
-2. Let Step 1 complete (use simulation method from Test 2)
-3. Verify:
-   - First notification appears
-   - Other timers continue running
-4. Let Step 2 complete
-5. Verify:
-   - Second notification stacks below first notification
-   - Both notifications auto-dismiss after 10 seconds
-
-### Test 11: Background Timer Completion (New!)
-
-Test that timers complete and notify even when you're not viewing the page:
-
-1. Start a 10-second timer using the console method from Test 2:
-```javascript
-const stored = JSON.parse(localStorage.getItem('sourdough:timers'));
-stored.state.timers[1].remainingSeconds = 10;
-stored.state.timers[1].totalSeconds = 10;
-localStorage.setItem('sourdough:timers', JSON.stringify(stored));
-location.reload();
-```
-
-2. Start the timer for Step 1
-3. **Immediately switch to a different tab or app**
-4. Wait 15 seconds (timer will complete while you're away)
-5. Return to the recipe tab
-6. Verify:
-   - Timer shows as completed
-   - Notification appears immediately
-   - Bell sound plays (if available)
-   - Step is marked with green checkmark
-
-**This proves the timer continues in the background!**
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 smart-sourdough/
-├── app/
-│   ├── api/
-│   │   └── recipe/
-│   │       └── route.ts          # API route to fetch parsed recipe
-│   ├── recipe/
-│   │   └── page.tsx              # Main recipe page with timers
-│   ├── layout.tsx                # Root layout with metadata
-│   ├── page.tsx                  # Landing page
-│   └── globals.css               # Global styles
-├── components/
-│   ├── ui/                       # shadcn/ui components
-│   │   ├── badge.tsx
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   └── progress.tsx
-│   ├── Notification.tsx          # Toast and browser notification handler
-│   ├── StepCard.tsx              # Recipe step card with metadata
-│   └── TimerControl.tsx          # Timer UI with controls
-├── lib/
-│   ├── parseRecipe.ts            # Recipe JSON parser and utilities
-│   └── utils.ts                  # Tailwind className merger
-├── store/
-│   └── useRecipeStore.ts         # Zustand store with localStorage
-├── sourdough-data/
-│   ├── recipe.md                 # Source recipe with JSON steps
-│   └── ramp.json                 # Project configuration
-└── public/
-    └── sounds/
-        └── bell.mp3              # Bell sound for timer completion
+├── app/                          # Next.js App Router pages
+│   ├── dashboard/               # Dashboard and sub-pages
+│   │   ├── feed/               # Starter feeding workflow
+│   │   ├── notes/              # Baking journal
+│   │   ├── starter-guide/      # 7-day starter guide
+│   │   ├── tips/               # Tips & troubleshooting
+│   │   └── page.tsx            # Main dashboard
+│   ├── recipe/                  # Main recipe page
+│   └── page.tsx                 # Landing page
+├── components/                   # React components
+│   ├── design-system/          # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── TopNav.tsx
+│   │   ├── BottomTab.tsx
+│   │   └── ...
+│   ├── StepCard.tsx            # Recipe step display
+│   ├── TimerControl.tsx        # Timer UI with calendar button
+│   ├── ImageZoom.tsx           # Full-screen image viewer with gestures
+│   ├── Footer.tsx              # Copyright and credits
+│   └── ...
+├── hooks/                        # Custom React hooks
+│   ├── useLanguage.ts          # Global language state
+│   ├── useTimer.ts             # Feed timer state
+│   └── useBackgroundTimers.ts  # Recipe timer tracking
+├── store/                        # Zustand state management
+│   └── useRecipeStore.ts       # Recipe progress & timers
+├── lib/                          # Utility functions
+│   ├── parseRecipe.ts          # Recipe markdown parser
+│   ├── audioUtils.ts           # Notification sounds with fallbacks
+│   └── calendarUtils.ts        # Calendar integration (iOS/Android/Desktop)
+├── sourdough-data/              # Recipe data
+│   ├── recipe.md               # Recipe content (formatted with emojis)
+│   └── ramp.json               # Feeding schedule data
+├── scripts/                      # Build scripts
+│   └── build-recipe.js         # Generates recipe.json from markdown
+└── public/                       # Static assets
+    ├── sounds/
+    │   └── bell.mp3            # Timer notification sound (optional)
+    └── images/
+        └── steps/              # Recipe step images
+            ├── step-1.jpg      # 16 high-quality step photos
+            ├── step-2.jpg
+            └── ...
 ```
 
-## Development Notes
+## 🛠️ Tech Stack
 
-### Modular Architecture
+- **Framework**: Next.js 14.2.33 (App Router, Static Generation)
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS
+- **State Management**: Zustand with localStorage persistence
+- **Animations**: Framer Motion (with touch gesture support)
+- **Icons**: Lucide React
+- **Fonts**: Fredoka (display), Inter (body)
+- **UI Components**: shadcn/ui (Radix UI primitives)
+- **Calendar**: iCalendar (.ics) format with platform-specific URL schemes
+- **Audio**: Web Audio API with three-tier fallback system
 
-- **parseRecipe.ts**: Handles extraction and normalization of recipe data from markdown
-- **useRecipeStore.ts**: Centralized state management with automatic persistence
-- **Component separation**: StepCard (display), TimerControl (logic), Notification (alerts)
+## 🎯 Key Features Explained
 
-### Future Enhancements
+### Timer System
 
-Potential improvements for future iterations:
+The app uses two timer systems:
 
-1. **Service Worker**: Background timer that works even when tab is closed
-2. **Recipe Selection**: Support multiple recipes, not just sourdough
-3. **Custom Timers**: Allow users to add their own timer steps
-4. **Export/Import**: Share timer state between devices via JSON export
-5. **Analytics**: Track which steps users find most helpful
-6. **Voice Alerts**: Text-to-speech announcements for timer completion
-7. **Dark Mode**: Theme toggle for different lighting conditions
+1. **Global Feed Timer** (`useTimer` hook) - Single 4-8 hour fermentation timer
+2. **Recipe Timers** (`useRecipeStore`) - Per-step timers with different durations
 
-## Troubleshooting
+Both systems:
+- Use `startTime` timestamps for accurate background tracking
+- Persist to localStorage
+- Play audio notifications on completion
+- Display simultaneously on dashboard
 
-### Timers Not Persisting
+### Calendar Integration
 
-- Check browser localStorage is enabled (not in private/incognito mode)
-- Verify localStorage key: `sourdough:timers` exists in DevTools → Application → Local Storage
+Each timer includes an "Add to Calendar" button that:
+- Detects your device platform (Android/iOS/Desktop)
+- Creates an iCalendar (.ics) event with proper formatting
+- Opens native calendar app via URL schemes:
+  - **Android**: `https://calendar.google.com/calendar/render?action=TEMPLATE&...`
+  - **iOS/macOS**: `data:text/calendar;charset=utf8,${encoded_ics}`
+  - **Desktop**: Google Calendar web interface
+- Includes reminder notifications 5 minutes before timer completion
+- Works without any downloads or external services
 
-### Notifications Not Showing
+### Image Zoom System
 
-- Ensure notification permission is granted
-- Check browser notification settings
-- Try restarting browser
-- Test in a different browser (Chrome, Firefox, Safari)
+The `ImageZoom` component provides:
+- **Click/Tap**: Opens full-screen modal with image centered
+- **Double-Tap Detection**: Uses 300ms threshold to detect double-tap, toggles between 1x and 2.5x zoom
+- **Pinch-to-Zoom**: Calculates distance between two touch points using `Math.hypot()`, scales image 1x-5x
+- **Drag-to-Pan**: When zoomed in (scale > 1x), enables drag gestures with constraints
+- **Touch Optimizations**: `touch-none`, `select-none`, `pointer-events-none` classes for smooth mobile experience
 
-### Audio Not Playing
+### Audio Notification System
 
-- Verify `public/sounds/bell.mp3` exists
-- Check browser audio permissions
-- Ensure browser tab is not muted
-- Try a different audio file format
+Three-tier fallback ensures notifications always work:
 
-### Type Errors During npm install
+1. **HTML5 Audio** (Primary): Loads `/sounds/bell.mp3` if available, most reliable and works in background
+2. **Web Audio API** (Secondary): Uses AudioContext with `fetch()` and `decodeAudioData()` for better compatibility
+3. **Generated Beep** (Fallback): Creates bell sound using oscillators with Web Audio API, guaranteed to work
 
-If you see TypeScript errors, ensure you have these packages:
+All tiers include error handling and automatic progression to next fallback if one fails.
 
-```bash
-npm install --save-dev @types/node @types/react @types/react-dom typescript
+### Recipe Parser
+
+Recipes are stored in markdown format with embedded JSON:
+
+```json
+{
+  "id": 1,
+  "title_en": "Mix Ingredients",
+  "title_ru": "Смешать Ингредиенты",
+  "instruction_en": "Combine flour, water...",
+  "instruction_ru": "Соедините муку, воду...",
+  "duration_min": 30,
+  "duration_max": 40
+}
 ```
 
-## License
+The build script (`scripts/build-recipe.js`) parses markdown and generates `recipe.json` for the app.
 
-MIT - Feel free to use this project for personal or commercial purposes.
+### Language System
 
-## Credits
+Global language state with Zustand:
+- Stored in `localStorage` as `dope-dough:language`
+- Available via `useLanguage()` hook on any page
+- Instant switching without page reload
 
-Recipe adapted from traditional sourdough baking methods. Built with modern web technologies for an optimal baking experience.
+## 📱 Routes
 
+- `/` - Landing page
+- `/dashboard` - Main dashboard
+- `/dashboard/feed` - Starter feeding workflow
+- `/dashboard/starter-guide` - 7-day starter creation guide
+- `/dashboard/notes` - Baking journal
+- `/dashboard/tips` - Tips & troubleshooting
+- `/recipe` - 16-step sourdough recipe
+
+## 🎨 Design Tokens
+
+```css
+--warm-bg: #FBF6EE        /* Warm beige background */
+--primary: #D96D3A        /* Orange */
+--secondary: #76A98B      /* Green */
+--text-primary: #2D2D2D   /* Dark gray */
+--text-secondary: #6B7280 /* Medium gray */
+```
+
+## 📄 License
+
+This project is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License** (CC BY-SA 4.0).
+
+### What this means:
+
+✅ **You CAN:**
+- Use this app for personal or commercial purposes
+- Modify and build upon this code
+- Share and redistribute
+
+⚠️ **You MUST:**
+- **Credit Pavel Klug** as the original author
+- Provide a link to this repository
+- Share your modifications under the same license
+- **If you profit from this app**, you must credit prominently and share your derivative work
+
+See the [LICENSE](LICENSE) file for full details.
+
+## 👨‍💻 Author & Credits
+
+**Made with ❤️ by Pavel Klug**
+
+- Email: [pavelklug@gmail.com](mailto:pavelklug@gmail.com)
+- GitHub: [@PavelK-at-964784600414](https://github.com/PavelK-at-964784600414)
+- Repository: [dope-dough](https://github.com/PavelK-at-964784600414/dope-dough)
+
+**Illustrations**: Ariella Secret Garden
+
+**Copyright**: © 2025 La Petite Sourdough. All rights reserved.
+
+## 🙏 Acknowledgments
+
+- Sourdough baking community for recipe inspiration and testing
+- Next.js team for the amazing framework
+- Framer Motion for gesture support
+- Open source contributors
+- Everyone who loves fresh-baked bread 🍞
+
+## 🐛 Found a Bug?
+
+Please open an issue on GitHub with:
+- Description of the bug
+- Steps to reproduce
+- Expected vs actual behavior
+- Screenshots if applicable
+
+## 💡 Feature Requests
+
+Have an idea? Open an issue with the "enhancement" label!
+
+---
+
+**Made with ❤️ and sourdough** by Pavel Klug

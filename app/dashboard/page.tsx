@@ -9,6 +9,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { StarterJar } from '@/components/design-system/StarterJar';
 import { Button } from '@/components/design-system/Button';
 import { Timeline, TimelineStep } from '@/components/design-system/Timeline';
+import { Footer } from '@/components/Footer';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useTimer } from '@/hooks/useTimer';
@@ -628,6 +629,7 @@ export default function DesignHomePage() {
         </section>
       </main>
 
+      <Footer />
       <BottomTab />
     </div>
   );

@@ -4,19 +4,24 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Timer, Cookie, CheckCircle2, Sprout } from 'lucide-react';
+import { Timer, Cookie, CheckCircle2, Sprout, Calendar, ArrowLeftRight } from 'lucide-react';
 import { TopNav } from '@/components/design-system/TopNav';
+import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/hooks/useLanguage';
 
 const translations = {
   en: {
-    subtitle: "A step-by-step guide to baking sourdough bread with intelligent timers, progress tracking, and bilingual support (English/Russian).",
+    subtitle: "A step-by-step guide to baking sourdough bread with intelligent timers, progress tracking, calendar integration, and bilingual support (English/Russian).",
     smartTimers: "Smart Timers",
     smartTimersDesc: "Automatic timers for each step with min/max duration ranges. Start, pause, and reset individual or all timers at once.",
     progressTracking: "Progress Tracking",
     progressTrackingDesc: "Your progress is automatically saved to localStorage. Continue where you left off even after closing your browser.",
     notifications: "Notifications",
     notificationsDesc: "Get toast popups, browser notifications, and a bell sound when timers complete so you never miss a step.",
+    calendarIntegration: "Calendar Integration",
+    calendarIntegrationDesc: "Add timer reminders directly to your device calendar (Google Calendar, Apple Calendar). Never miss a feeding or proofing time.",
+    readableInstructions: "Clear Instructions",
+    readableInstructionsDesc: "Recipe steps formatted with bullet points and line breaks for easy reading while cooking. No more long paragraphs!",
     startBaking: "Start Baking",
     starterGuide: "Starter Guide",
     viewDashboard: "View Dashboard",
@@ -24,13 +29,17 @@ const translations = {
     tipText: "Enable browser notifications for the best experience. You'll be prompted when you start your first timer."
   },
   ru: {
-    subtitle: "Пошаговое руководство по выпечке хлеба на закваске с умными таймерами, отслеживанием прогресса и двуязычной поддержкой (английский/русский).",
+    subtitle: "Пошаговое руководство по выпечке хлеба на закваске с умными таймерами, отслеживанием прогресса, интеграцией календаря и двуязычной поддержкой (английский/русский).",
     smartTimers: "Умные Таймеры",
     smartTimersDesc: "Автоматические таймеры для каждого шага с минимальной/максимальной продолжительностью. Запускайте, ставьте на паузу и сбрасывайте отдельные или все таймеры сразу.",
     progressTracking: "Отслеживание Прогресса",
     progressTrackingDesc: "Ваш прогресс автоматически сохраняется в localStorage. Продолжайте с того места, где остановились, даже после закрытия браузера.",
     notifications: "Уведомления",
     notificationsDesc: "Получайте всплывающие уведомления, уведомления браузера и звуковой сигнал при завершении таймеров, чтобы не пропустить ни одного шага.",
+    calendarIntegration: "Интеграция Календаря",
+    calendarIntegrationDesc: "Добавляйте напоминания таймеров прямо в календарь устройства (Google Calendar, Apple Calendar). Никогда не пропустите кормление или расстойку.",
+    readableInstructions: "Понятные Инструкции",
+    readableInstructionsDesc: "Шаги рецепта отформатированы с маркерами и переносами строк для удобного чтения во время готовки. Больше никаких длинных абзацев!",
     startBaking: "Начать Выпечку",
     starterGuide: "Гид по Закваске",
     viewDashboard: "Панель Управления",
@@ -69,7 +78,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
@@ -111,6 +120,34 @@ export default function HomePage() {
               </p>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Calendar className="h-5 w-5 text-purple-600" />
+                {t.calendarIntegration}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-600">
+                {t.calendarIntegrationDesc}
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <ArrowLeftRight className="h-5 w-5 text-teal-600" />
+                {t.readableInstructions}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-600">
+                {t.readableInstructionsDesc}
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="text-center space-y-4">
@@ -143,6 +180,8 @@ export default function HomePage() {
           </p>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 }

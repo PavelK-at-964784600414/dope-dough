@@ -4,8 +4,8 @@
       "id": 1,
       "title_ru": "Активировать закваску",
       "title_en": "Activate the starter",
-      "instruction_ru": "В стакан: ½ ч.л. закваски + 20 г воды — размешать вилкой. Добавить 20 г муки, перемешать, зачистить стенки, накрыть плотно и оставить при комнатной температуре ~4 часа до появления пузырьков. Если не печётe — убрать в холодильник (до 3 дней без кормления). *Примечание: когда закваска будет готова, повторите этот шаг еще раз, чтобы у вас была закваска для следующего хлеба. Используйте страницу \"Покормить Закваску\" для пошагового процесса кормления.",
-      "instruction_en": "In a glass: ½ tsp starter + 20 g water — mix with a fork. Add 20 g flour, mix, scrape sides, cover tightly and leave at room temperature ~4 hours until bubbly. If not baking, refrigerate (up to 3 days unfed). *Note: when starter is ready, repeat this step again so you will have starter for the next bread. Use the \"Feed Starter\" page for step-by-step feeding process.",
+      "instruction_ru": "В стакан:\n• ½ ч.л. закваски + 20 г (0.7 oz) воды — размешать вилкой 🥄\n• Добавить 20 г (0.7 oz) муки, перемешать\n• Зачистить стенки, накрыть плотно 🫙\n• Оставить при комнатной температуре ~4 часа до появления пузырьков 🫧\n\nЕсли не печёте — убрать в холодильник (до 3 дней без кормления) ❄️\n\n💡 Примечание: когда закваска будет готова, повторите этот шаг еще раз, чтобы у вас была закваска для следующего хлеба. Используйте страницу \"Покормить Закваску\" для пошагового процесса кормления.",
+      "instruction_en": "In a glass:\n• ½ tsp starter + 20 g (0.7 oz) water — mix with a fork 🥄\n• Add 20 g (0.7 oz) flour, mix well\n• Scrape sides, cover tightly 🫙\n• Leave at room temperature ~4 hours until bubbly 🫧\n\nIf not baking — refrigerate (up to 3 days unfed) ❄️\n\n💡 Note: when starter is ready, repeat this step again so you will have starter for the next bread. Use the \"Feed Starter\" page for step-by-step feeding process.",
       "duration_min_seconds": 14400,
       "duration_max_seconds": 14400,
       "tags": [
@@ -19,8 +19,8 @@
       "id": 2,
       "title_ru": "Подготовить опару (levain)",
       "title_en": "Prepare the levain",
-      "instruction_ru": "К активированной закваске (~40–50 г) добавить 80–85 г воды и 80–85 г муки, хорошо размешать. Оставить при комнатной температуре 6–8 часов (ориентируйтесь по виду: купол/провал).",
-      "instruction_en": "To active starter (~40–50 g) add 80–85 g water and 80–85 g flour, mix well. Leave at room temp for 6–8 hours (watch for dome/collapse).",
+      "instruction_ru": "К активированной закваске (~40–50 г / 1.4–1.8 oz):\n• Добавить 80–85 г (2.8–3 oz) воды 💧\n• Добавить 80–85 г (2.8–3 oz) муки 🌾\n• Хорошо размешать, используя миксер или вручную 🥄\n• Оставить при комнатной температуре 6–8 часов ⏰\n\nОриентируйтесь по виду: купол/провал означает готовность 📈",
+      "instruction_en": "To active starter (~40–50 g / 1.4–1.8 oz):\n• Add 80–85 g (2.8–3 oz) water 💧\n• Add 80–85 g (2.8–3 oz) flour 🌾\n• Mix well, using mixer or manually 🥄\n• Leave at room temp for 6–8 hours ⏰\n\nWatch for dome/collapse as sign of readiness 📈",
       "duration_min_seconds": 21600,
       "duration_max_seconds": 28800,
       "tags": [
@@ -34,8 +34,8 @@
       "id": 3,
       "title_ru": "Замес — основной (часть 1)",
       "title_en": "Mix main dough (part 1)",
-      "instruction_ru": "В чашу миксера: 270 г холодной воды + 90–110 г закваски — размешать. Добавить 200 г цельнозерновой и 200 г белой муки. Месить крюком ~5 минут на средней скорости до образования кома, накрыть. Повторить для второй порции, если делаете 2 хлеба.",
-      "instruction_en": "Mixer bowl: 270 g cold water + 90–110 g starter — mix. Add 200 g whole-grain + 200 g white flour. Hook-mix ~5 minutes medium speed until dough forms, cover. Repeat for second loaf if needed.",
+      "instruction_ru": "В чашу миксера:\n• 270 г (9.5 oz) холодной воды 💧\n• 90–110 г (3.2–3.9 oz) закваски — размешать\n• Добавить 200 г (7 oz) цельнозерновой муки 🌾\n• Добавить 200 г (7 oz) белой муки\n• Месить крюком ~5 минут на средней скорости до образования кома 🔄\n• Оставить в чаше миксера и накрыть\n\nПовторить для второй порции, если делаете 2 хлеба 🍞",
+      "instruction_en": "Mixer bowl:\n• 270 g (9.5 oz) cold water 💧\n• 90–110 g (3.2–3.9 oz) starter — mix together\n• Add 200 g (7 oz) whole-grain flour 🌾\n• Add 200 g (7 oz) white flour\n• Hook-mix ~5 minutes medium speed until dough forms 🔄\n• Leave in the mixer bowl and cover\n\nRepeat for second loaf if needed 🍞",
       "duration_min_seconds": 300,
       "duration_max_seconds": 300,
       "tags": [
@@ -48,8 +48,8 @@
       "id": 4,
       "title_ru": "Первичная автолиз / отдых 40 мин",
       "title_en": "Bulk rest ~40 min",
-      "instruction_ru": "Накрыть тесто и оставить на столе 40 минут для автолиза и начала развития глютена.",
-      "instruction_en": "Cover dough and let rest on counter for 40 minutes for autolyse and gluten development.",
+      "instruction_ru": "• Накрыть тесто\n• Оставить на столе 40 минут ⏰\n\n💡 Примечание: можно оставить тесто накрытым прямо в чаше миксера, на следующем шаге мы снова будем использовать миксер.",
+      "instruction_en": "• Cover dough\n• Let rest on counter for 40 minutes ⏰\n\n💡 Note: you can leave the dough covered inside the mixer bowl, next step we will use the mixer once again.",
       "duration_min_seconds": 2400,
       "duration_max_seconds": 2400,
       "tags": [
@@ -62,8 +62,8 @@
       "id": 5,
       "title_ru": "Добавить соль — замес 2 минуты",
       "title_en": "Add salt — mix 2 minutes",
-      "instruction_ru": "Добавить 9 г соли к тесту. Месить на высокой скорости 2 минуты.",
-      "instruction_en": "Add 9 g salt to the dough. Mix on high speed for 2 minutes.",
+      "instruction_ru": "• Добавить 9 г (0.3 oz) соли к тесту 🧂\n• Месить на высокой скорости 2 минуты 🔄",
+      "instruction_en": "• Add 9 g (0.3 oz) salt to the dough 🧂\n• Mix on high speed for 2 minutes 🔄",
       "duration_min_seconds": 120,
       "duration_max_seconds": 120,
       "tags": [
@@ -77,8 +77,8 @@
       "id": 6,
       "title_ru": "Добавить воду — замес 2-3 минуты",
       "title_en": "Add water — mix 2-3 minutes",
-      "instruction_ru": "Влить 28 г воды. Месить на малой скорости 2–3 минуты, пока вода не впитается.",
-      "instruction_en": "Pour in 28 g water. Mix at low speed for 2–3 minutes until water is absorbed.",
+      "instruction_ru": "• Влить 28 г (1 oz) воды 💧\n• Месить на малой скорости 2–3 минуты\n• Продолжать пока вода не впитается",
+      "instruction_en": "• Pour in 28 g (1 oz) water 💧\n• Mix at low speed for 2–3 minutes\n• Continue until water is absorbed",
       "duration_min_seconds": 120,
       "duration_max_seconds": 180,
       "tags": [
@@ -91,8 +91,8 @@
       "id": 7,
       "title_ru": "Финальный замес с семенами — 5 минут",
       "title_en": "Final mix with seeds — 5 minutes",
-      "instruction_ru": "Месить на высокой скорости 5 минут. Добавить 1 ст.л. семян (чиа/лён/семечки) и перемешать до равномерного распределения.",
-      "instruction_en": "Mix on high speed for 5 minutes. Add 1 tbsp seeds (chia/flax/seed mix) and mix until evenly distributed.",
+      "instruction_ru": "• Месить на высокой скорости 5 минут 🔄\n• Добавить 1 ст.л. семян (чиа/лён/семечки) 🌱\n• Перемешать до равномерного распределения",
+      "instruction_en": "• Mix on high speed for 5 minutes 🔄\n• Add 1 tbsp seeds (chia/flax/seed mix) 🌱\n• Mix until evenly distributed",
       "duration_min_seconds": 300,
       "duration_max_seconds": 300,
       "tags": [
@@ -106,8 +106,8 @@
       "id": 8,
       "title_ru": "Первичная ферментация — складывание 1",
       "title_en": "Bulk fermentation — stretch-fold 1",
-      "instruction_ru": "Переложить тесто в смазанную миску, накрыть. Оставить 30–40 мин. Смочить руки и растянуть/сложить тесто (подцепить край, растянуть вверх, сложить к центру). Добавить оливки/семечки (по желанию). Накрыть снова.",
-      "instruction_en": "Transfer dough to oiled bowl, cover. Rest 30–40 min. Wet hands and stretch-fold (grab edge, stretch up, fold to center). Add olives/seeds if desired. Cover again.",
+      "instruction_ru": "Переложить тесто:\n• Смазать миску маслом\n• Выложить тесто, накрыть\n• Оставить на 30–40 минут ⏰\n\nТехника складывания:\n• Смочить руки водой 💧\n• Подцепить край теста\n• Растянуть вверх ⬆️\n• Сложить к центру\n• Повторить со всех сторон 🔄\n\nПо желанию:\n• Добавить оливки или семечки 🫒\n• Накрыть снова",
+      "instruction_en": "Transfer dough:\n• Oil a bowl\n• Place dough, cover\n• Rest 30–40 minutes ⏰\n\nFolding technique:\n• Wet hands 💧\n• Grab edge of dough\n• Stretch up ⬆️\n• Fold to center\n• Repeat from all sides 🔄\n\nOptional:\n• Add olives or seeds 🫒\n• Cover again",
       "duration_min_seconds": 1800,
       "duration_max_seconds": 2400,
       "tags": [
@@ -121,8 +121,8 @@
       "id": 9,
       "title_ru": "Складывание 2",
       "title_en": "Stretch-fold 2",
-      "instruction_ru": "Оставить тесто на 30–40 мин. Смочить руки и снова растянуть/сложить со всех сторон. Накрыть.",
-      "instruction_en": "Rest dough 30–40 min. Wet hands and stretch-fold again from all sides. Cover.",
+      "instruction_ru": "• Оставить тесто на 30–40 минут ⏰\n• Смочить руки 💧\n• Растянуть и сложить со всех сторон 🔄\n• Накрыть",
+      "instruction_en": "• Rest dough 30–40 minutes ⏰\n• Wet hands 💧\n• Stretch and fold from all sides 🔄\n• Cover",
       "duration_min_seconds": 1800,
       "duration_max_seconds": 2400,
       "tags": [
@@ -136,8 +136,8 @@
       "id": 10,
       "title_ru": "Складывание 3 (финальное)",
       "title_en": "Stretch-fold 3 (final)",
-      "instruction_ru": "Оставить тесто на 30–40 мин. Смочить руки и сделать последнее растягивание/складывание. Накрыть.",
-      "instruction_en": "Rest dough 30–40 min. Wet hands and do final stretch-fold. Cover.",
+      "instruction_ru": "• Оставить тесто на 30–40 минут ⏰\n• Смочить руки 💧\n• Выполнить финальное растяжение и складывание 🔄\n• Тесто должно быть гладким и упругим ✨\n• Накрыть",
+      "instruction_en": "• Rest dough 30–40 minutes ⏰\n• Wet hands 💧\n• Perform final stretch and fold 🔄\n• Dough should be smooth and elastic ✨\n• Cover",
       "duration_min_seconds": 1800,
       "duration_max_seconds": 2400,
       "tags": [
@@ -151,8 +151,8 @@
       "id": 11,
       "title_ru": "Финальная ферментация",
       "title_en": "Final bulk fermentation",
-      "instruction_ru": "Оставить тесто на 1–1.5 часа для окончательной ферментации. Тесто должно увеличиться в объёме и стать воздушным.",
-      "instruction_en": "Let dough rest 1–1.5 hours for final fermentation. Dough should increase in volume and become airy.",
+      "instruction_ru": "• Оставить тесто на 1–1,5 часа ⏰\n• Накрыть\n\nПризнаки готовности: ✅\n• Тесто увеличилось в объёме 📈\n• Стало воздушным и мягким ☁️\n• При лёгком нажатии медленно возвращается",
+      "instruction_en": "• Let dough rest 1–1.5 hours ⏰\n• Keep covered\n\nReadiness signs: ✅\n• Dough increased in volume 📈\n• Airy and soft ☁️\n• Slowly springs back when gently pressed",
       "duration_min_seconds": 3600,
       "duration_max_seconds": 5400,
       "tags": [
@@ -166,8 +166,8 @@
       "id": 12,
       "title_ru": "Формовка и холодная расстойка 16 часов",
       "title_en": "Shaping & cold proof (16 hours)",
-      "instruction_ru": "Смочить стол, аккуратно перевернуть тесто, завернуть края внутрь, сформировать шар. Одну заготовку в металлическую форму, вторую — в бамбуковую корзину. Накрыть плёнкой и поставить в холодильник на 16 часов.",
-      "instruction_en": "Wet work surface, gently flip dough, tuck edges to form a ball. Place one in metal loaf pan, the other in a banneton. Cover and refrigerate 16 hours.",
+      "instruction_ru": "Подготовка:\n• Смочить стол водой 💧\n• Аккуратно перевернуть тесто на стол\n\nФормовка:\n• Завернуть края теста внутрь\n• Сформировать плотный шар 🔵\n• Создать натяжение на поверхности\n\nРасстойка:\n• Поместить заготовку(и) в металлическую форму(ы) или корзину(ы) баннетон 🧺\n• Накрыть плёнкой\n• Поставить в холодильник на 16 часов ❄️",
+      "instruction_en": "Preparation:\n• Wet work surface with water 💧\n• Gently flip dough onto surface\n\nShaping:\n• Tuck edges inward\n• Form a tight ball 🔵\n• Create surface tension\n\nProofing:\n• Place loaf/s into metal pan/s or banneton basket/s 🧺\n• Cover with plastic\n• Refrigerate 16 hours ❄️",
       "duration_min_seconds": 57600,
       "duration_max_seconds": 57600,
       "tags": [
@@ -181,8 +181,8 @@
       "id": 13,
       "title_ru": "Выпечка — подготовка духовки",
       "title_en": "Bake — preheat",
-      "instruction_ru": "Разогреть духовку до 250°C вместе с жаровней (Dutch oven). Достать тесто из формы чтобы чуть согрелось.",
-      "instruction_en": "Preheat oven to 250°C with the Dutch oven inside. Take dough out of fridge/pan to warm a bit.",
+      "instruction_ru": "• Разогреть духовку до 250°C (480°F) 🔥\n• Поставить жаровню (Dutch oven) внутрь для нагрева\n• Достать тесто из холодильника ❄️\n• Дать тесту немного согреться (~10-15 минут) 🌡️",
+      "instruction_en": "• Preheat oven to 250°C (480°F) 🔥\n• Place Dutch oven inside to heat\n• Remove dough from fridge ❄️\n• Let warm slightly (~10-15 minutes) 🌡️",
       "tags": [
         "bake",
         "preheat"
@@ -192,8 +192,8 @@
       "id": 14,
       "title_ru": "Выпечка — этап 1 (пар)",
       "title_en": "Bake — stage 1 (steam)",
-      "instruction_ru": "Поставить хлеб в жаровню, хорошо побрызгать водой. Печь 15 минут при 250°C с закрытой крышкой.",
-      "instruction_en": "Place loaf into Dutch oven, spray water to create steam. Bake 15 minutes at 250°C with lid on.",
+      "instruction_ru": "• Аккуратно переложить тесто в горячую жаровню ⚠️\n• Сделать надрезы лезвием (по желанию) 🔪\n• Хорошо побрызгать водой для создания пара 💦\n• Накрыть крышкой\n• Печь 15 минут при 250°C (480°F) 🔥",
+      "instruction_en": "• Carefully transfer dough into hot Dutch oven ⚠️\n• Score with blade (optional) 🔪\n• Spray generously with water to create steam 💦\n• Cover with lid\n• Bake 15 minutes at 250°C (480°F) 🔥",
       "duration_min_seconds": 900,
       "duration_max_seconds": 900,
       "tags": [
@@ -206,8 +206,8 @@
       "id": 15,
       "title_ru": "Выпечка — этап 2 (корка)",
       "title_en": "Bake — stage 2 (crust)",
-      "instruction_ru": "Уменьшить температуру до 220°C, снять крышку и печь ещё 30 минут.",
-      "instruction_en": "Reduce oven to 220°C, remove lid and bake another 30 minutes.",
+      "instruction_ru": "• Уменьшить температуру до 220°C (430°F) 🔥\n• Снять крышку с жаровни\n• Печь ещё 30 минут без крышки ⏰\n\nГотовность: ✅\n• Корка должна быть золотисто-коричневой 🟤\n• При постукивании звук глухой 🔊",
+      "instruction_en": "• Reduce oven to 220°C (430°F) 🔥\n• Remove Dutch oven lid\n• Bake uncovered 30 more minutes ⏰\n\nDoneness: ✅\n• Crust should be golden brown 🟤\n• Sounds hollow when tapped 🔊",
       "duration_min_seconds": 1800,
       "duration_max_seconds": 1800,
       "tags": [
@@ -221,8 +221,8 @@
       "id": 16,
       "title_ru": "Хранение",
       "title_en": "Storage",
-      "instruction_ru": "Достать хлеб и охладить на решетке. Остудить полностью перед нарезкой. Хранить в пакете или в большой коробке, накрыть.",
-      "instruction_en": "Remove loaf and cool on a wire rack. Cool completely before slicing. Store in a bag or large box, covered.",
+      "instruction_ru": "Охлаждение:\n• Достать хлеб из духовки 🔥\n• Переложить на решётку 🧊\n• Дать полностью остыть (минимум 2 часа) ⏰\n\n⚠️ Важно: не нарезать горячий хлеб!\n\nХранение: 📦\n• В льняном мешочке или бумажном пакете (корка остаётся хрустящей) 🥖\n• В пластиковом пакете (мякиш остаётся мягким, корка размягчается)\n• В хлебнице при комнатной температуре 🏠\n• Хранится 3-5 дней 📅",
+      "instruction_en": "Cooling:\n• Remove loaf from oven 🔥\n• Transfer to wire rack 🧊\n• Cool completely (minimum 2 hours) ⏰\n\n⚠️ Important: don't slice while hot!\n\nStorage: 📦\n• In linen bag or paper bag (keeps crust crispy) 🥖\n• In plastic bag (keeps crumb soft, softens crust)\n• In bread box at room temperature 🏠\n• Keeps 3-5 days 📅",
       "tags": [
         "store"
       ]

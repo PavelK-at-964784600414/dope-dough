@@ -125,7 +125,7 @@ export function StepCard({
           )}
 
           <p 
-            className="text-base text-text-primary leading-relaxed font-body"
+            className="text-base text-text-primary leading-relaxed font-body whitespace-pre-line"
             itemProp="text"
           >
             {instruction}

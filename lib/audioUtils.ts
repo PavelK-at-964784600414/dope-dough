@@ -1,12 +1,20 @@
 /**
  * Audio utility to generate and play notification sounds
  * Fallback when bell.mp3 is not available
+ * Includes rate limiting for security
  */
 
 import { getAudioContext, initAudioContext } from './audioContext';
+import { notificationRateLimiter } from './security';
 
 export async function playNotificationSound(): Promise<void> {
   console.log('playNotificationSound called');
+  
+  // Rate limit notification sounds to prevent abuse
+  if (!notificationRateLimiter.isAllowed('audio-notification')) {
+    console.warn('[Security] Notification sound rate limit exceeded');
+    return;
+  }
   
   // Method 1: Try simple HTML5 Audio first (most reliable)
   try {

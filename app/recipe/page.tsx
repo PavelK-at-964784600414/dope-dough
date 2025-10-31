@@ -11,6 +11,7 @@ import { RecipeOverview } from '@/components/RecipeOverview';
 import { IngredientsChecklist } from '@/components/IngredientsChecklist';
 import { Celebration } from '@/components/Celebration';
 import { TopNav } from '@/components/design-system/TopNav';
+import { Footer } from '@/components/Footer';
 import { useBackgroundTimers } from '@/hooks/useBackgroundTimers';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Button } from '@/components/ui/button';
@@ -416,6 +417,8 @@ export default function RecipePage() {
           </div>
         )}
       </div>
+      
+      <Footer />
     </div>
   );
 }
