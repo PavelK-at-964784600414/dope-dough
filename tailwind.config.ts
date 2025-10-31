@@ -19,9 +19,9 @@ const config: Config = {
   	},
   	extend: {
   		fontFamily: {
-  			display: ['var(--font-fredoka)', 'system-ui', '-apple-system', 'sans-serif'],
-  			body: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
-  			sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+  			display: ['var(--font-comfortaa)', 'system-ui', '-apple-system', 'sans-serif'],
+  			body: ['var(--font-comfortaa)', 'system-ui', '-apple-system', 'sans-serif'],
+  			sans: ['var(--font-comfortaa)', 'system-ui', '-apple-system', 'sans-serif'],
   		},
   		colors: {
   			// Keep shadcn vars for compatibility

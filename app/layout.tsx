@@ -1,16 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter, Fredoka } from 'next/font/google';
+import { Comfortaa } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const fredoka = Fredoka({ 
-  subsets: ['latin'],
-  variable: '--font-fredoka',
+const comfortaa = Comfortaa({ 
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-comfortaa',
   display: 'swap',
   weight: ['300', '400', '500', '600', '700'],
 });
@@ -26,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fredoka.variable}`}>
-      <body className={`${inter.className} font-body antialiased`}>{children}</body>
+    <html lang="en" className={comfortaa.variable}>
+      <body className={`${comfortaa.className} antialiased`}>{children}</body>
     </html>
   );
 }
