@@ -395,7 +395,10 @@ export const useRecipeStore = create<RecipeStore>()(
       merge: (persistedState, currentState) => {
         // Validate persisted state
         if (!persistedState || typeof persistedState !== 'object') {
-          console.warn('[Security] Invalid persisted state, using defaults');
+          // Only log in development, not during build (SSG)
+          if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
+            console.warn('[Security] Invalid persisted state, using defaults');
+          }
           return currentState;
         }
         
